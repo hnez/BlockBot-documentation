@@ -11,8 +11,8 @@ VM-instructions and encoding:
     00 00 01 XX | LD   | Load next Byte into register XX and skip execution over it
     00 00 10 XX | NOT  | Bitwise NOT of Register XX
 
-    00 01 XX NN | ADI  | Add immidiate NN to Register XX
-    00 10 XX NN | SUI  | Subtract immidiate NN from Register XX
+    00 01 00 XX | INC  | Add one to Register XX
+    00 01 01 XX | DEC  | Subtract one from Register XX
 
     00 10 NN NN | JFW  | Jump forward NNNN instructions
     00 11 NN NN | JBW  | Jump backwards NNNN instructions
