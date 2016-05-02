@@ -7,10 +7,10 @@ VM-instructions and encoding:
 
     Instr bits  | Name | Description
     ------------+------+------------
-    00 00 00 00 | NOP  | No operation
-    00 00 00 01 |      | Reserved for later use
-    00 00 00 10 | JLF  | Long forward jump. Jumps (RA << 8)|RB instructions forward
-    00 00 00 11 | JLB  | Long backward jump. Jumps (RA << 8)|RB instructions backward
+    00 00 00 00 |      | Reserved for later use
+    00 00 00 01 | JIF  | Indirect forward jump. Jumps (RA << 8)|RB instructions forward
+    00 00 00 10 | JIB  | Indirect backward jump. Jumps (RA << 8)|RB instructions backward
+    00 00 00 11 | LDI  | Indirect load. Loads byte from (RA << 8)|RB
                 |      |
     00 00 01 XX | LD   | Load next Byte into register XX and skip execution over it
     00 00 10 XX | SLZ  | Skip if register is less than zero (bit 7 is set)
@@ -44,6 +44,7 @@ Aliases:
     ------------+-----------+------------
     NEG XX      | SUB RZ XX | Gives the 2-complement of a number
     SRL XX      | ADD XX XX | Shift register left by one bit
+    NOP         | SNE RZ RZ | No operation
 
 Registers:
 ==========
