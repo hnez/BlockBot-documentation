@@ -8,17 +8,13 @@ VM-instructions and encoding:
     Instr bits  | Name | Description
     ------------+------+------------
     00 00 00 00 |      | Reserved for later use
-    00 00 00 01 | JIF  | Indirect forward jump. Jumps (RA << 8)|RB instructions forward
-    00 00 00 10 | JIB  | Indirect backward jump. Jumps (RA << 8)|RB instructions backward
-    00 00 00 11 | LDI  | Indirect load. Loads byte from (RA << 8)|RB
                 |      |
-    00 00 01 XX | LD   | Load next Byte into register XX and skip execution over it
-    00 00 10 XX | SLZ  | Skip if register is less than zero (bit 7 is set)
+    00 00 01 00 | SOV  | Skip if last arithmetic instruction generated an over- or underflow
+    00 00 01 01 | SKP  | Push current PC and RC to stack
+    00 00 01 10 | SKD  | Discard last stack entry
+    00 00 01 11 | SKJ  | Jump to last address on stack and pop RC
                 |      |
-    00 00 11 00 | SOV  | Skip if last arithmetic instruction generated an over- or underflow
-    00 00 11 01 | SKP  | Push current PC and RC to stack
-    00 00 11 10 | SKD  | Discard last stack entry
-    00 00 11 11 | SKJ  | Jump to last address on stack and pop RC
+    00 00 10 XX | LD   | Load next Byte into register XX and skip execution over it
                 |      |
     00 01 00 XX | DEC  | Decrement register XX by one
     00 01 01 XX | INC  | Increment register XX by one
@@ -28,18 +24,18 @@ VM-instructions and encoding:
     00 10 NN NN | JFW  | Jump forward NNNN instructions
     00 11 NN NN | JBW  | Jump backwards NNNN instructions
                 |      |
-    01 0N NN XX | LDA  | Load io address NNN into register XX
-    01 1N NN XX | STA  | Store Register XX into io address NNN
+    01 00 XX YY | MOV  | Copy register content of YY to XX
+    01 01 XX YY | OR   | Store logic or of XX and YY in XX
+    01 10 XX YY | AND  | Store logic and of XX and YY in XX
+    01 11 XX YY | XOR  | Store logic exclusive or of XX and YY in XX
                 |      |
-    10 00 XX YY | MOV  | Copy register content of YY to XX
-    10 01 XX YY | OR   | Store logic or of XX and YY in XX
-    10 10 XX YY | AND  | Store logic and of XX and YY in XX
-    10 11 XX YY | XOR  | Store logic exclusive or of XX and YY in XX
+    10 00 XX YY | ADD  | Store sum of XX and YY in XX
+    10 01 XX YY | SUB  | Store difference of XX and YY in XX
+    10 10 XX YY | SEQ  | Skip next instruction if equal
+    10 11 XX YY | SNE  | Skip next instruction if not equal
                 |      |
-    11 00 XX YY | ADD  | Store sum of XX and YY in XX
-    11 01 XX YY | SUB  | Store difference of XX and YY in XX
-    11 10 XX YY | SEQ  | Skip next instruction if equal
-    11 11 XX YY | SNE  | Skip next instruction if not equal
+    11 0N NN XX | LDA  | Load io address NNN into register XX
+    11 1N NN XX | STA  | Store Register XX into io address NNN
 
 Aliases:
 --------
