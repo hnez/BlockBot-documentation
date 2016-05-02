@@ -17,8 +17,8 @@ VM-instructions and encoding:
     00 10 NN NN | JFW  | Jump forward NNNN instructions
     00 11 NN NN | JBW  | Jump backwards NNNN instructions
                 |      |
-    01 0X XN NN | LDA  | Load io address NNN into register XX
-    01 1X XN NN | STA  | Store Register XX into io address NNN
+    01 0N NN XX | LDA  | Load io address NNN into register XX
+    01 1N NN XX | STA  | Store Register XX into io address NNN
                 |      |
     10 00 XX YY | MOV  | Copy register content of YY to XX
     10 01 XX YY | OR   | Store logic or of XX and YY in XX
@@ -68,20 +68,19 @@ Examples:
 Drive forward for some time:
 ----------------------------
 
-    LD RA           // Load motor speed and direction
-    64              // Fwd 50%
-    LD RB           // Load time to drive for
-    120             // Two seconds
+    LD RA 64        // Load motor speed and direction Fwd 50%
+    LD RB 120       // Load time to drive for Two seconds
 
-    STA RA 'Mot1'   // Set Motor 1
-    STA RA 'Mot2'   // Set Motor 2
 
-    STA RB 'Timer'  // Setup timer
+    STA Mot1 RA    // Set Motor 1
+    STA Mot2 RA    // Set Motor 2
+
+    STA Timer RB   // Setup timer
 
     loop:
-    LDA RC 'Timer' // Read timer value
+    LDA Timer RC  // Read timer value
     SEQ RZ RC      // Skip next instruction if time is up
     JBW loop       // Loop
 
-    STA RZ 0       // Stop Motor 1
-    STA RZ 1       // Stop Motor 2
+    STA Mot1 RZ       // Stop Motor 1
+    STA Mot2 RZ       // Stop Motor 2
