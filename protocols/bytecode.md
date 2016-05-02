@@ -9,7 +9,10 @@ VM-instructions and encoding:
     ------------+------+------------
     00 00 00 00 | NOP  | No operation
     00 00 01 XX | LD   | Load next Byte into register XX and skip execution over it
-    00 00 10 XX | NOT  | Bitwise NOT of Register XX
+                |      |
+    00 01 00 XX | DEC  | Decrement register XX by one
+    00 01 01 XX | INC  | Increment register XX by one
+    00 01 10 XX | NOT  | Bitwise NOT of Register XX
                 |      |
     00 10 NN NN | JFW  | Jump forward NNNN instructions
     00 11 NN NN | JBW  | Jump backwards NNNN instructions
