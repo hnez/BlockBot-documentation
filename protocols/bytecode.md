@@ -14,7 +14,11 @@ VM-instructions and encoding:
                 |      |
     00 00 01 XX | LD   | Load next Byte into register XX and skip execution over it
     00 00 10 XX | SLZ  | Skip if register is less than zero (bit 7 is set)
-    00 00 11 01 | SOV  | Skip if last arithmetic instruction generated an over- or underflow
+                |      |
+    00 00 11 00 | SOV  | Skip if last arithmetic instruction generated an over- or underflow
+    00 00 11 01 | SKP  | Push current PC and RC to stack
+    00 00 11 10 | SKD  | Discard last stack entry
+    00 00 11 11 | SKJ  | Jump to last address on stack and pop RC
                 |      |
     00 01 00 XX | DEC  | Decrement register XX by one
     00 01 01 XX | INC  | Increment register XX by one
@@ -133,5 +137,3 @@ Drive forward until button one triggers, then turn right
     stop:
     STA Mot1 RZ     // Stop Motor 1
     STA Mot2 RZ     // Stop Motor 2
-    
-    
