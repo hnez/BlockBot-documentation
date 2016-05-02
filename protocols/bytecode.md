@@ -71,9 +71,9 @@ Memory Addresses:
     0 11      | DOut  | Digital Outputs
               |       |
     1 00      | Timer | Counts down at 60Hz when set to something else than zero
-    1 01      |       |
-    1 10      |       |
-    1 11      |       |
+    1 01      |       | General purpose memory A
+    1 10      |       | General purpose memory B
+    1 11      |       | General purpose memory c
 
 Examples:
 =========
