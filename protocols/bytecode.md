@@ -8,11 +8,18 @@ VM-instructions and encoding:
     Instr bits  | Name | Description
     ------------+------+------------
     00 00 00 00 | NOP  | No operation
+    00 00 00 01 |      | Reserved for later use
+    00 00 00 10 | JLF  | Long forward jump. Jumps (RA << 8)|RB instructions forward
+    00 00 00 11 | JLB  | Long backward jump. Jumps (RA << 8)|RB instructions backward
+                |      |
     00 00 01 XX | LD   | Load next Byte into register XX and skip execution over it
+    00 00 10 XX | SLZ  | Skip if register is less than zero (bit 7 is set)
+    00 00 11 01 | SOV  | Skip if last arithmetic instruction generated an over- or underflow
                 |      |
     00 01 00 XX | DEC  | Decrement register XX by one
     00 01 01 XX | INC  | Increment register XX by one
     00 01 10 XX | NOT  | Bitwise NOT of Register XX
+    00 01 11 XX | SRR  | Shift register right by one bit
                 |      |
     00 10 NN NN | JFW  | Jump forward NNNN instructions
     00 11 NN NN | JBW  | Jump backwards NNNN instructions
@@ -27,8 +34,8 @@ VM-instructions and encoding:
                 |      |
     11 00 XX YY | ADD  | Store sum of XX and YY in XX
     11 01 XX YY | SUB  | Store difference of XX and YY in XX
-    11 10 XX YY | SEQ  | Skip if equal
-    11 11 XX YY | SNE  | Skip if not equal
+    11 10 XX YY | SEQ  | Skip next instruction if equal
+    11 11 XX YY | SNE  | Skip next instruction if not equal
 
 Aliases:
 --------
@@ -36,6 +43,7 @@ Aliases:
     Instruction | Alias for | Description
     ------------+-----------+------------
     NEG XX      | SUB RZ XX | Gives the 2-complement of a number
+    SRL XX      | ADD XX XX | Shift register left by one bit
 
 Registers:
 ==========
