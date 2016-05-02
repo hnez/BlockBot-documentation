@@ -77,9 +77,8 @@ Examples:
 Drive forward for some time:
 ----------------------------
 
-    LD RA 64        // Load motor speed and direction Fwd 50%
-    LD RB 120       // Load time to drive for Two seconds
-
+    LD RA 64       // Load motor speed and direction Fwd 50%
+    LD RB 120      // Load time to drive for Two seconds
 
     STA Mot1 RA    // Set Motor 1
     STA Mot2 RA    // Set Motor 2
@@ -87,7 +86,7 @@ Drive forward for some time:
     STA Timer RB   // Setup timer
 
     loop:
-    LDA Timer RC  // Read timer value
+    LDA Timer RC   // Read timer value
     SEQ RZ RC      // Skip next instruction if time is up
     JBW loop       // Loop
 
