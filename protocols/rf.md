@@ -68,3 +68,93 @@ Window Size (4bits)
 
 This is the number of maximum length packages the sender
 can receive without overflowing the buffer.
+
+Connection lifetime
+===================
+
+Handshake
+---------
+
+### SYN
+
+To establish a new connection a controller sends a message
+without payload and the `SYN` flag set to the robot.
+
+The `Data Pipe` field has to be set to the data pipe the
+robot is configured to use.
+
+The `Sequence number` field should contain a random number.
+
+The `Acknoledgement Number` field should be zero.
+
+And the `Window size` field should contain the number
+of available slots in the receive buffer.
+
+### SYN-ACK
+
+The robot sends back a message without payload and
+the `SYN` and `ACK` fields set.
+
+Except for the `Acknoledgement Number` field
+the same rules as above apply.
+
+The `Acknoledgement Number` field should be set to the
+Sequence number received in the SYN message
+
+### ACK
+
+The controller then answers with a
+packet with optional payload and the
+`ACK` flag set. The `Acknoledgement Number`
+field should be the sequence number the robot sent.
+The `Sequence number` field should contain the Sequence
+Number of the first message incremented by one.
+
+Messages that were not acknoledged in a specified
+time should be resent.
+
+Connection open
+---------------
+
+After peforming the three way hanshake the connection
+is considered _open_.
+
+Both peers are now free to send messages at any time.
+
+Every message with a payload should contain the Sequence number of
+the last message received from the other peer
+in the `Acknoledgement Number` field.
+And the Sequence number of the last message
+sent, incremented by one, in the `Sequence number` field.
+
+Messages without payload should contain the same fields as
+above but with the Sequence Number not incremented by one.
+
+Every message should be Acknoledged by the other peer,
+either in a package containing payload, or if no payload
+to be sent is available in an empty message.
+
+A message not Acknoledged in a specified time
+should be re-sent until it gets acknoledged or
+the maximum number of retransmissions is reached.
+If the maximum number of retransmissions is reached
+the connection should be considered _closed_.
+
+Close connection
+----------------
+
+###FIN
+To cleanly close a connection a message with optional
+payload and the `FIN` flag set should be sent by either peer.
+
+###FIN-ACK
+The other peer should answer with a message without payload
+and the `FIN` and `ACK` flags set.
+
+###ACK
+The peer initiating the closing of the connection
+should acknoledge the FIN-ACK message with an
+empty message with a set `ACK` Flag.
+
+Messages that were not acknoledged in a specified
+time should be resent.
