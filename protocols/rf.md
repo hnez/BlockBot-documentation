@@ -11,17 +11,16 @@ rf links with short datagram sizes.
 Packet format
 =============
 
-    +---------------+-------------------------------+
-    |     Offset    |          Bit number           |
-    | Octet | Bit   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-    +---+---+---+---+---+---+---+---+---------------+
-    |     0 |     0 |  Data Pipe    | S | A | F |   |
-    |     1 |     8 |         Sequence Number       |
-    |     2 |    16 |    Acknowledgment Number      |
-    |     3 |    24 |  Payload Len  |  Window size  |
-    |     4 |    32 |            Payload            |
-    |   ... |   ... |                               |
-    +-------+-------+-------------------------------+
+
+        Offset    |          Bit number
+    Octet | Bit   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+    ------+-------+---+---+---+---+---------------
+        0 |     0 |  Data Pipe    | S | A | F |
+        1 |     8 |         Sequence Number
+        2 |    16 |    Acknowledgment Number
+        3 |    24 |  Payload Len  |  Window size
+        4 |    32 |            Payload
+      ... |   ... |
 
 Data Pipe (4 bits)
 ------------------
