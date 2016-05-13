@@ -32,8 +32,12 @@ the sender.
 Window Size (4bits)
 -------------------
 
-This is the number of maximum length (16 payload bytes)
-messages the sender can receive without overflowing the buffer.
+This is the number of maximum length messages the sender
+can receive without overflowing the buffer.
+
+The maximum length should be pre shared information between
+the peers, 16 payload bytes should be considered a reasonable value.
+
 
 Sequence Number (8 bits)
 ------------------------
