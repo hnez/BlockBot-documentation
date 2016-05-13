@@ -34,7 +34,7 @@ Type fields
     0x0201 | TMTY_BAT   | Feedback about the battery status
            |            |
     0xff00 | ERR_TX     | Checksum missmatch or timeout occured
-    
+
 CHAIN_AQ
 ------
 
@@ -129,3 +129,24 @@ This packet should be sent back to the other peer, when an error
 occures while receiving a message.
 
 When no back channel is available the error report may be omitted.
+
+Examples
+========
+
+Brick EEPROM
+------------
+
+    01 00 00 23              | Brick container header containing brick descriptor length
+    01 01 00 03 46 77 64     | Brick name "Fwd"
+    01 03 00 04 00 00 00 03  | Replace byte 4 of the bytecode with potentiometer value
+    01 02 00 0c 09 40 0a 00  | 12 bytes of Bytecode
+    e1 e5 f2 d3 a3 31 e0 e4  |
+
+Aquisition (first hop, brick as seen above)
+----------------------
+
+    00 01 00 29 f8 21        | Chain aquisition header containing full length an checksum
+    01 00 00 23              | Brick container header containing brick descriptor length
+    01 01 00 03 46 77 64     | Brick name "Fwd"
+    01 02 00 0c 09 40 0a 10  | Parameter packet is missing. And byte four is replaced
+    e1 e5 f2 d3 a3 31 e0 e4  | by the potentiometer value in the bytecode.
