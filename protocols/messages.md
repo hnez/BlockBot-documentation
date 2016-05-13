@@ -21,16 +21,18 @@ and agnostic to unkown packet types.
 Type fields
 -----------
 
+    Number | Mnemonic   | Description
+    -------+------------+-------------
     0x0001 | CHAIN_AQ   | Aquisition request
            |            |
     0x0100 | BRICK_CONT | Brick container
     0x0101 | BRICK_NAME | Human readable name of a brick
     0x0102 | BRICK_BC   | The machine readable bytecode
     0x0103 | BRICK_PREP | Determines which bytecode bytes are parameters
-
+           |            |
     0x0200 | TMTY_BRNR  | Telemetry feedback about the currently executed brick
     0x0201 | TMTY_BAT   | Feedback about the battery status
-
+           |            |
     0xff00 | ERR_TX     | Checksum missmatch or timeout occured
     
 CHAIN_AQ
