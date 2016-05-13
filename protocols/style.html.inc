@@ -28,6 +28,7 @@
 
   p {
     margin-left: 1.5em;
+    margin-right: 1em;
   }
 
   pre {
