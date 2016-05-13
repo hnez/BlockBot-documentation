@@ -35,13 +35,13 @@ Flags (4 bits)
 
 Contains 3 1-bit flags
 
-- SYN Synchronize sequence numbers. This flag is set in the first message of
+- SYN - Synchronize sequence numbers. This flag is set in the first message of
   each peer to start a communication.
 
-- ACK Indicates that messages up to and including the sequence number in the
-  acknoledge field were successfully received.
+- ACK - Indicates that messages up to and including the sequence number in the
+   `Acknoledgement Number` field were successfully received.
 
-- FIN Signals that this was the last message a peer sends.
+- FIN - Signals that the peer wants the connection to be closed.
 
 Sequence Number (8 bits)
 ------------------------
@@ -49,14 +49,14 @@ Sequence Number (8 bits)
 If the SYN flag is set, this is the first sequence number and it should be included
 in the answering handshake message.
 If the SYN flag is not set this is the sequence number of the current message.
-The sequence number is incremented by one for each subsequent message and wraps around
-at 255.
+The sequence number is incremented by one for each subsequent message
+if it contains payload and wraps around at 255.
 
 Acknowledgment Number (8bits)
 -----------------------------
 
 If the ACK flag is set, this is the number of the last successfully received message from
-the peer.
+the other peer.
 
 Payload Len (4bits)
 -------------------
@@ -66,8 +66,8 @@ This is the number of payload bytes following the header.
 Window Size (4bits)
 -------------------
 
-This is the number of maximum length packages the sender
-can receive without overflowing the buffer.
+This is the number of maximum length (16 payload bytes)
+messages the sender can receive without overflowing the buffer.
 
 Connection lifetime
 ===================
@@ -80,7 +80,7 @@ Handshake
 To establish a new connection a controller sends a message
 without payload and the `SYN` flag set to the robot.
 
-The `Data Pipe` field has to be set to the data pipe the
+The `Data Pipe` field has to be set to the same data pipe the
 robot is configured to use.
 
 The `Sequence number` field should contain a random number.
@@ -99,7 +99,7 @@ Except for the `Acknoledgement Number` field
 the same rules as above apply.
 
 The `Acknoledgement Number` field should be set to the
-Sequence number received in the SYN message
+Sequence number received in the SYN message.
 
 ### ACK
 
@@ -108,7 +108,7 @@ packet with optional payload and the
 `ACK` flag set. The `Acknoledgement Number`
 field should be the sequence number the robot sent.
 The `Sequence number` field should contain the Sequence
-Number of the first message incremented by one.
+Number of the first message.
 
 Messages that were not acknoledged in a specified
 time should be resent.
@@ -131,7 +131,7 @@ Messages without payload should contain the same fields as
 above but with the Sequence Number not incremented by one.
 
 Every message should be Acknoledged by the other peer,
-either in a package containing payload, or if no payload
+either in a message containing payload, or if no payload
 to be sent is available in an empty message.
 
 A message not Acknoledged in a specified time
