@@ -33,6 +33,9 @@ Type fields
     0x0200 | TMTY_BRNR  | Telemetry feedback about the currently executed brick
     0x0201 | TMTY_BAT   | Feedback about the battery status
            |            |
+    0x0300 | PGM_DATA   | Request brick reprogramming
+    0x0301 | PGM_STAT   | brick reprogramming status feedback
+           |            |
     0xff00 | ERR_TX     | Checksum missmatch or timeout occured
 
 CHAIN_AQ
@@ -119,6 +122,30 @@ TMTY_BAT
 This packet provides an estimation of the battery status of a hop.
 A value of 0xffff should correspond to a full battery, a value of
 0x0000 to a completely dead one.
+
+PGM_DATA
+--------
+
+    PGM_DATA (16bit) | Length (16bit) | EEPROM data
+
+This packet requests the receiving brick to reprogram its
+brick descriptor.
+
+Upon successfull programming or when an error occurs the brick
+should send a `PGM_STAT` packet.
+
+PGM_STAT
+--------
+
+    PGM_STAT (16bit) | Length (16bit) | status code (16bit)
+
+This packet is a response to a `PGM_DATA` programming request.
+
+The `status code` field may be one of the following
+
+    0x0000 | STATUS_OK    | Reprogramming performed sucessfully
+    0x0001 | STATUS_NOMEM | Internal memory not sufficient to store program
+
 
 ERR_TX
 ------
