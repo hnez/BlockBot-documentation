@@ -10,9 +10,9 @@ VM-instructions and encoding:
     00 00 00 00 |      | Reserved for later use
                 |      |
     00 00 01 00 | SOV  | Skip if last arithmetic instruction generated an over- or underflow
-    00 00 01 01 | SKP  | Push current PC and RC to stack
-    00 00 01 10 | SKD  | Discard last stack entry
-    00 00 01 11 | SKJ  | Jump to last address on stack and pop RC
+    00 00 01 01 | SPU  | Push current PC and RC to stack
+    00 00 01 10 | SPO  | Pop RC and fill PC buffer from stack
+    00 00 01 11 | SPJ  | Perform the jump in the PC buffer
                 |      |
     00 00 10 XX | LD   | Load next Byte into register XX and skip execution over it
                 |      |
