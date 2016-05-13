@@ -15,10 +15,10 @@ Packet format
         Offset    |          Bit number
     Octet | Bit   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
     ------+-------+---+---+---+---+---------------
-        0 |     0 |  Data Pipe    | S | A | F |
+        0 |     0 |  Data Pipe    |  Window size
         1 |     8 |         Sequence Number
         2 |    16 |    Acknowledgment Number
-        3 |    24 |  Payload Len  |  Window size
+        3 |    24 | S | A | F |   Payload Len
         4 |    32 |            Payload
       ... |   ... |
 
@@ -29,18 +29,11 @@ Identifies which pipe number sender and receiver are configured to use.
 This is pre shared information and should be configurable at least in
 the sender.
 
-Flags (4 bits)
---------------
+Window Size (4bits)
+-------------------
 
-Contains 3 1-bit flags
-
-- SYN - Synchronize sequence numbers. This flag is set in the first message of
-  each peer to start a communication.
-
-- ACK - Indicates that messages up to and including the sequence number in the
-   `Acknoledgement Number` field were successfully received.
-
-- FIN - Signals that the peer wants the connection to be closed.
+This is the number of maximum length (16 payload bytes)
+messages the sender can receive without overflowing the buffer.
 
 Sequence Number (8 bits)
 ------------------------
@@ -57,16 +50,23 @@ Acknowledgment Number (8bits)
 If the ACK flag is set, this is the number of the last successfully received message from
 the other peer.
 
-Payload Len (4bits)
+Flags (3 bits)
+--------------
+
+Contains 3 1-bit flags
+
+- SYN - Synchronize sequence numbers. This flag is set in the first message of
+  each peer to start a communication.
+
+- ACK - Indicates that messages up to and including the sequence number in the
+   `Acknoledgement Number` field were successfully received.
+
+- FIN - Signals that the peer wants the connection to be closed.
+
+Payload Len (5bits)
 -------------------
 
 This is the number of payload bytes following the header.
-
-Window Size (4bits)
--------------------
-
-This is the number of maximum length (16 payload bytes)
-messages the sender can receive without overflowing the buffer.
 
 Connection lifetime
 ===================
