@@ -161,3 +161,115 @@ empty message with a set `ACK` Flag.
 
 Messages that were not acknoledged in a specified
 time should be resent.
+
+Example
+=======
+
+Shown below are the internal states of the communicating peers
+and the communication flow between them.
+To keep the diagramm clean only internal state variables that
+changed between the current and previous state are shown.
+
+    Controller               Packets              Robot
+    ----------               -------              -----
+
+    snum_local_cur     0                          snum_local_cur     0
+    snum_local_acked   0                          snum_local_acked   0
+    snum_remote_cur    0                          snum_remote_cur    0
+    snum_remote_acked  0                          snum_remote_acked  0
+    state         CLOSED                          state         CLOSED
+    timeout_ka     65535                          timeout_ka     65535
+    timeout_noack  65535                          timeout_noack  65535
+    timeout_pkgsep     0                          timeout_pkgsep     0
+    wsize_remote       0                          wsize_remote       0
+    wsize_local        6                          wsize_local        3
+
+                             SYN
+                             wsize: 6, len:   0
+                             seq:  93, ack:   0
+                            ------------------->
+
+    snum_local_cur    93                         snum_local_cur    113
+    state       SYN_SENT                         state    SYN_RECEIVED
+    timeout_ka      4096                         timeout_ka        512
+    timeout_noack  16384                         timeout_noack   16384
+    timeout_pgksep   256                         timeout_pkgsep    512
+                                                 wsize_remote        6
+
+
+                                 Waiting
+
+    timeout_ka       3584                        timeout_ka          0
+    timeout_noack   15872                        timeout_noack   15872
+    timeout_pkgsep      0                        timeout_pkgsep      0
+
+                             SYN ACK
+                             wsize: 3, len:   0
+                             seq: 113, ack:  93
+                            <-------------------
+
+
+    snum_local_acked   93                        snum_remote_acked  93
+    snum_remote_cur   113                        state    SYN_ACK_SENT
+    state            OPEN                        timeout_ka       4096
+    timeout_ka       3584                        timeout_pkgsep    256
+    timeout_noack   16384
+    timeout_pkgsep    512
+    wsize_remote        3
+
+                              Collecting Data
+
+    snum_local_cur     96
+    wsize_local         3
+
+                                 Waiting
+
+    timeout_ka       3072                        timeout_ka       3072
+    timeout_noack   15872                        timeout_noack   15360
+    timeout_pkgsep      0                        timeout_pkgsep      0
+
+                             ACK
+                             wsize: 3, len:  16
+                             seq:  94, ack: 113
+                            ------------------->
+
+    timeout_pkgsep    256
+
+                                 Waiting
+
+    timeout_ka       2816                        timeout_ka        512
+    timeout_noack   15616                        timeout_noack   16384
+    timeout_pkgsep      0                        timeout_pkgsep      0
+
+                             ACK
+                             wsize: 3, len:  16
+                             seq:  95, ack: 113
+                            ------------------->
+
+    timeout_pkgsep    256
+
+                                 Waiting
+
+    timeout_ka       2560                        timeout_ka        512
+    timeout_noack   15360                        timeout_noack   16384
+    timeout_pkgsep      0                        timeout_pkgsep      0
+
+
+                             ACK
+                             wsize: 3, len:  16
+                             seq:  95, ack: 113
+                            ------------------->
+
+    timeout_pkgsep    256
+
+                                 Waiting
+
+
+    timeout_ka       2304                        timeout_ka          0
+    timeout_noack   15104                        timeout_noack   15872
+    timeout_pkgsep      0                        timeout_pkgsep      0
+
+                             ACK
+                             wsize: 0, len:   0
+                             seq: 113, ack:  96
+                            <-------------------
