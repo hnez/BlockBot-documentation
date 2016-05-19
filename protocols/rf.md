@@ -233,7 +233,9 @@ changed between the current and previous state are shown.
                              seq:  94, ack: 113
                             ------------------->
 
-    timeout_pkgsep    256
+    timeout_pkgsep    256                        wsize_local         2
+                                                 wsize_remote        3
+                                                 timeout_pkgsep    512
 
                                  Waiting
 
@@ -246,7 +248,8 @@ changed between the current and previous state are shown.
                              seq:  95, ack: 113
                             ------------------->
 
-    timeout_pkgsep    256
+    timeout_pkgsep    256                        wsize_local         1
+                                                 timeout_pkgsep    512
 
                                  Waiting
 
@@ -260,7 +263,8 @@ changed between the current and previous state are shown.
                              seq:  95, ack: 113
                             ------------------->
 
-    timeout_pkgsep    256
+    timeout_pkgsep    256                        wsize_local         0
+                                                 timeout_pkgsep    512
 
                                  Waiting
 
@@ -273,3 +277,49 @@ changed between the current and previous state are shown.
                              wsize: 0, len:   0
                              seq: 113, ack:  96
                             <-------------------
+
+    snum_local_acked   96                        snum_remote_acked  96
+    timeout_noack   16384                        timeout_ka       4096
+    timeout_pkgsep    512                        timeout_pkgsep    256
+    wsize_remote        0
+    wsize_local         6
+
+                                 Waiting
+
+    timeout_ka       1792                        timeout_ka       3584
+    timeout_noack   15872                        timeout_noack   15360
+    timeout_pkgsep      0                        timeout_pkgsep      0
+
+                             FIN ACK
+                             wsize: 6, len:   0
+                             seq:  96, ack: 113
+                            ------------------->
+
+    state        FIN_SENT                        state    FIN_RECEIVED
+    timeout_ka       4096                        timeout_ka        512
+    timeout_pkgsep    256                        timeout_noack   16384
+                                                 timeout_pkgsep    512
+                                                 wsize_remote        6
+
+                                 Waiting
+
+    timeout_ka       3584                        timeout_ka          0
+    timeout_noack   15872                        timeout_noack   15872
+    timeout_pkgsep      0                        timeout_pkgsep      0
+
+
+                             FIN ACK
+                             wsize: 3, len:   0
+                             seq: 113, ack:  96
+                            <-------------------
+
+    state    FIN_ACK_RCVD                        state    FIN_ACK_SENT
+    ...                                          ...
+
+                             FIN ACK
+                             wsize: 6, len:   0
+                             seq:  96, ack: 113
+                            ------------------->
+
+    state          CLOSED                        state          CLOSED
+    ...                                          ...
