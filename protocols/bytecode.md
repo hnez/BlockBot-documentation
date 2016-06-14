@@ -5,37 +5,39 @@ Instructions:
 VM-instructions and encoding:
 -----------------------------
 
-    Instr bits  | Name | Description
-    ------------+------+------------
-    00 00 00 00 |      | Reserved for later use
-                |      |
-    00 00 01 00 | SOV  | Skip if last arithmetic instruction generated an over- or underflow
-    00 00 01 01 | SPU  | Push current PC and RC to stack
-    00 00 01 10 | SPO  | Pop RC and fill PC buffer from stack
-    00 00 01 11 | SPJ  | Perform the jump in the PC buffer
-                |      |
-    00 00 10 XX | LD   | Load next Byte into register XX and skip execution over it
-                |      |
-    00 01 00 XX | DEC  | Decrement register XX by one
-    00 01 01 XX | INC  | Increment register XX by one
-    00 01 10 XX | NOT  | Bitwise NOT of Register XX
-    00 01 11 XX | SRR  | Shift register right by one bit
-                |      |
-    00 10 NN NN | JFW  | Jump forward NNNN instructions
-    00 11 NN NN | JBW  | Jump backwards NNNN instructions
-                |      |
-    01 00 XX YY | MOV  | Copy register content of YY to XX
-    01 01 XX YY | OR   | Store logic or of XX and YY in XX
-    01 10 XX YY | AND  | Store logic and of XX and YY in XX
-    01 11 XX YY | XOR  | Store logic exclusive or of XX and YY in XX
-                |      |
-    10 00 XX YY | ADD  | Store sum of XX and YY in XX
-    10 01 XX YY | SUB  | Store difference of XX and YY in XX
-    10 10 XX YY | SEQ  | Skip next instruction if equal
-    10 11 XX YY | SNE  | Skip next instruction if not equal
-                |      |
-    11 0N NN XX | LDA  | Load io address NNN into register XX
-    11 1N NN XX | STA  | Store Register XX into io address NNN
+    Instr bits  | Name       | Description
+    ------------+------------+------------
+    00 00 00 __ |            | Reserved for later use
+                |            |
+    00 00 01 00 | SOV        | Skip if last arithmetic instruction generated an over- or underflow
+    00 00 01 01 | SPU        | Push current PC and RC to stack
+    00 00 01 10 | SPO        | Pop RC and fill PC buffer from stack
+    00 00 01 11 | SPJ        | Perform the jump in the PC buffer
+                |            |
+    00 00 10 XX | LD  XX     | Load next Byte into register XX and skip execution over it
+                |            |
+    00 00 11 __ |            | Reserved for later use
+                |            |
+    00 01 00 XX | DEC XX     | Decrement register XX by one
+    00 01 01 XX | INC XX     | Increment register XX by one
+    00 01 10 XX | NOT XX     | Bitwise NOT of Register XX
+    00 01 11 XX | SRR XX     | Shift register right by one bit
+                |            |
+    00 10 NN NN | JFW NNNN   | Jump forward NNNN+1 instructions
+    00 11 NN NN | JBW NNNN   | Jump backwards NNNN+1 instructions
+                |            |
+    01 00 YY XX | MOV XX  YY | Copy register content of YY to XX
+    01 01 YY XX | OR  XX  YY | Store logic or of XX and YY in XX
+    01 10 YY XX | AND XX  YY | Store logic and of XX and YY in XX
+    01 11 YY XX | XOR XX  YY | Store logic exclusive or of XX and YY in XX
+                |            |
+    10 00 YY XX | ADD XX  YY | Store sum of XX and YY in XX
+    10 01 YY XX | SUB XX  YY | Store difference of XX and YY in XX
+    10 10 YY XX | SEQ XX  YY | Skip next instruction if equal
+    10 11 YY XX | SNE XX  YY | Skip next instruction if not equal
+                |            |
+    11 0A AA XX | LDA AAA XX | Load io address AAA into register XX
+    11 1A AA XX | STA AAA XX | Store Register XX into io address AAA
 
 Aliases:
 --------
@@ -44,6 +46,7 @@ Aliases:
     ------------+-----------+------------
     NEG XX      | SUB RZ XX | Gives the 2-complement of a number
     SRL XX      | ADD XX XX | Shift register left by one bit
+    SKP         | SEQ RZ RZ | Skip next instruction unconditionally
     NOP         | SNE RZ RZ | No operation
 
 Registers:
