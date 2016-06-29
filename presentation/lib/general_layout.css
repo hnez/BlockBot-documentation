@@ -1,0 +1,60 @@
+/* TODO row und col alternative schreiben */
+
+.comment {
+    color: rgba(19, 58, 92, 0.42);
+}
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  color: #777;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+
+
+/* Customize container */
+@media (min-width: 780px) {
+  .container {
+    max-width: 750px;
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+ul {
+  /* This is always ugly */
+  list-style-type: none;
+}
+.len-ul {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* Custom li item */
+.len-li {
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
