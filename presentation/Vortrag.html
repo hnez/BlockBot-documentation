@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+
+    <title>Vortrag ETProjekt</title>
+
+    <meta name="description" content="Ein Vortrag zum ETProjekt Programmierbares Auto">
+    <meta name="author" content="Lenard Wiedekamp, Leonard Göhrs">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="lib/reveal.js/css/reveal.css" />
+    <link rel="stylesheet" href="lib/reveal.js/css/theme/black.css" id="theme" />
+
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
+    <style>
+      .ersatzschaltbild {
+        box-shadow: unset !important;
+        border: unset !important;
+        background-color: unset !important;
+        min-width: 23%;
+        min-height: 5em;
+      }
+
+      .nameblock {
+        margin: 1.5em !important;
+      }
+
+      .nameblock p,
+      .nameblock small {
+        margin: 0.15em !important;
+        line-height: 1;
+      }
+    </style>
+
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>ETProjekt</h1>
+          <h3>Programmierbares Auto</h3>
+          <p>
+            <small>Lenard Wiedekamp, Leonard Göhrs</small>
+          </p>
+        </section>
+
+        <section>
+          <h3>Aufgabenstellung</h3>
+
+          <ul>
+            <li>Kindern programmatische Denkweise vermitteln.</li>
+            <li>Spielzeugauto umbauen</li>
+            <li>Einfache, intuitive Bedienung.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Grundidee</h3>
+
+          <ul>
+            <li>Bauklötze anreihen für Programmabfolge</li>
+            <li>Übertragung auf Auto-Steuerung</li>
+            <li>Abfahren von vorgegebenen Streckenaufgaben oder freies Programmieren</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Projektteile</h3>
+
+          <ul>
+            <li>Bauklötze</li>
+            <li>Übetragungseinheit</li>
+            <li>Roboter</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Bauklötze</h3>
+
+          <section>
+            <h5>Gehäuse</h5>
+          </section>
+
+          <section>
+            <h5>Platine</h5>
+          </section>
+
+          <section>
+            <h5>Firmware</h5>
+          </section>
+        </section>
+
+        <section>
+          <h3>Übertragungseinheit</h3>
+
+
+          <section>
+            <h5>Gehäuse</h5>
+          </section>
+
+          <section>
+            <h5>Platine</h5>
+          </section>
+
+          <section>
+            <h5>Firmware</h5>
+          </section>
+        </section>
+
+        <section>
+          <h3>Auto</h3>
+
+          <section>
+            <h5>Basis</h5>
+          </section>
+
+          <section>
+            <h5>Platine</h5>
+          </section>
+
+          <section>
+            <h5>Firmware</h5>
+          </section>
+        </section>
+
+        <section>
+          <h3>Gelerntes</h3>
+
+          <section>
+            <h5>Arduino / Mikrcontroller</h5>
+          </section>
+
+          <section>
+            <h5>Versionsverwaltung (git)</h5>
+
+            <pre style="box-shadow: unset"><code>
+commit 0df71ce5066dcfa8f88049d3dd0e514a56db26ab
+Author: Leonard Göhrs leonard@goehrs.eu
+Date:   Thu May 26 11:38:07 2016 +0200
+
+Simplified uart byte gap handling by not using overflow interrupt
+
+commit 6c08c638a394d831478dbb182877980d20eac091
+Author: Lenard Wiedekamp lenwdk@gmail.com
+Date:   Wed May 25 20:51:33 2016 +0200
+
+Better active clock
+            </code></pre>
+          </section>
+
+          <section>
+            <h5>Unit tests</h5>
+          </section>
+        </section>
+
+        <section>
+          <h3>Ende</h3>
+
+          <div class="nameblock">
+            <p>Lenard Wiedekamp</p>
+            <p style="font-size:60%">lenwdk@gmail.com</p>
+            <p style="font-size:60%"><a href="https://lenwdk.de">lenwdk.de</a></p>
+          </div>
+
+          <div class="nameblock">
+            <p>Leonard Göhrs</p>
+            <p style="font-size:60%">leonard@goehrs.eu</p>
+            <p style="font-size:60%"><a href="https://zerforscht.de">zerforscht.de</a></p>
+          </div>
+
+          <a style="color: white; font-size: 50%; top: 4em;" href="https://leonard.goehrs.eu/etp">leonard.goehrs.eu/etp</a>
+        </section>
+      </div>
+    </div>
+
+
+    <script src="lib/reveal.js/js/head.min.js"></script>
+    <script src="lib/reveal.js/js/reveal.js"></script>
+    <script src="lib/init.js"></script>
+  </body>
+</html>
