@@ -17,9 +17,9 @@ var speaksymbolmap= {
 
 function getTimer()
 {
-  if (curtime < maxtime) curtime++;
+  //if (curtime < maxtime) curtime++;
 
-  return (curtime/maxtime);
+  return (0); //(curtime/maxtime);
 }
 
 Reveal.initialize ({
