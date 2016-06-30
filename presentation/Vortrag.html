@@ -44,6 +44,23 @@
         margin: 0.15em !important;
         line-height: 1;
       }
+
+      .bgedsection {
+        background-color: rgba(0, 0, 0, 0.38);
+        border-radius: 1em;
+      }
+
+      .reinballern {
+        width: 50%;
+        background: unset !important;
+        border: medium none !important;
+        opacity: 0;
+        transition:opacity 500ms ease-out;
+      }
+
+      .reinballern:hover {
+        opacity: 1;
+      }
     </style>
 
     <div class="reveal">
@@ -137,11 +154,10 @@
             <img style="width:50%" src="img/kloetze.jpg" />
           </section>
 
-          <section>
+          <section data-background-image="img/kloetzepcbsch.svg" class="bgedsection">
             <h5>Platine</h5>
 
             <p>Enthält ATtiny85, Schutzbeschaltung, LEDs und einen Taster/ein Potentiometer</p>
-            <img style="background-color: rgb(23, 23, 23); height: 8em" src="img/kloetzepcbsch.svg" />
           </section>
 
           <section>
@@ -174,9 +190,9 @@
             <h5>Firmware <3</h5>
 
             <pre style="box-shadow: unset;"><code style="max-height: 450px;">
-b_rcvd>>=1;
+b_rcvd&gt;&gt;=1;
 
-if (RX_PIN & _BV(RX_NUM)) {
+if (RX_PIN &amp; _BV(RX_NUM)) {
   // Sender sent a high bit
   b_rcvd|= _BV(7);
 }
@@ -185,12 +201,11 @@ if (RX_PIN & _BV(RX_NUM)) {
 if (uart.flags.forward) {
   // Forward the data bit if forwarding is requested
 
-  if (b_send & 0x01) TX_PORT|=  _BV(TX_NUM);
-  else               TX_PORT&= ~_BV(TX_NUM);
+  if (b_send &amp; 0x01) TX_PORT|=  _BV(TX_NUM);
+  else               TX_PORT&amp;= ~_BV(TX_NUM);
 
-  b_send>>=1;
-}
-            </code></pre>
+  b_send&gt;&gt;=1;
+}</code></pre>
           </section>
 
         </section>
@@ -204,11 +219,10 @@ if (uart.flags.forward) {
             <p>Wie bei den Klötzen</p>
           </section>
 
-          <section>
+          <section data-background-image="img/remotesch.svg" class="bgedsection">
             <h5>Platine</h5>
 
             <p>Enthält ATmega328, Strombegrenzte Spannungsversorgung für die Klötze und ein Funkmodul</p>
-            <img style="background-color: rgb(23, 23, 23); height: 7em" src="img/remotesch.svg" />
           </section>
 
           <section>
@@ -232,7 +246,7 @@ if (uart.flags.forward) {
           <h3>Auto</h3>
 
           <section data-background-video="https://leonard.goehrs.eu/dk_crop.webm" data-background-video-loop data-background-video-muted
-                   style="background-color: rgba(0, 0, 0, 0.38); border-radius: 1em;">
+                   class="bgedsection">
             <h5>Basis</h5>
 
             <ul>
@@ -250,15 +264,13 @@ if (uart.flags.forward) {
             <img style="width:60%" src="img/dk_base.jpg" />
           </section>
 
-          <section>
+          <section data-background-image="img/denmarkbasesch.svg" class="bgedsection">
             <h5>Platine</h5>
 
             <ul>
               <li>Einseitig, auf CNC-Maschine ausgefräst.</li>
               <li>Enthält nicht (mehr) mehr als zwei H-Brücken</li>
             </ul>
-
-            <img style="background-color: rgb(23, 23, 23); height: 7em" src="img/denmarkbasesch.svg" />
           </section>
 
           <section>
@@ -273,11 +285,11 @@ if (uart.flags.forward) {
           </section>
 
           <section>
-            <!-- https://www.youtube.com/watch?v=pGS8WX1zX2M#t=23m28s  Kannte ich natürlich schon :D-->
+            <!-- https://www.youtube.com/watch?v=pGS8WX1zX2M#t=23m28s -->
 
+            <img class="reinballern" src="https://leonard.goehrs.eu/reinballern.jpg" />
             <p style="font-size: 120%">"Das muss mehr reinballern"</p>
             <p style="margin-left: 40%">- Leonard</p>
-            <!-- Übersehe ich hier was, oder klaust du Zitate? -->
           </section>
 
           <section>
@@ -391,7 +403,7 @@ Better active clock
             </code></pre>
           </section>
 
-          <section>
+          <section data-background-iframe="img/unittestbg.html" class="bgedsection">
             <h5>Unit tests</h5>
 
             <ul>
@@ -414,12 +426,12 @@ static char *<a href="https://github.com/hnez/BlockBot-firmware/blob/master/inte
   uint8_t prog[]={0x44, 0x15, 0x24, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15};
   // MOV RA RZ, INC RA, JFW 4, INC RA, INC RA, INC RA, INC RA, INC RA, INC RA
 
-  bzero(&vm, sizeof(vm));
+  bzero(&amp;vm, sizeof(vm));
 
   vm.prog= prog;
   vm.prog_len= sizeof(prog);
 
-  vm_run(&vm);
+  vm_run(&amp;vm);
 
   mu_assert("Something went wrong in program containing JFW",
     vm.regs[0] == 3);
@@ -445,7 +457,7 @@ rm tests/tst-opcodes.test</pre></code>
           </section>
         </section>
 
-        <section>
+        <section data-background-image="img/gnu.svg" class="bgedsection">
           <h5>Ausblick</h5>
 
           <p style="font-size: 60%">Alle Quelldateien stehen unter einer freien Lizenz zum Download bereit</p>
@@ -496,13 +508,9 @@ rm tests/tst-opcodes.test</pre></code>
       </div>
     </div>
 
-
     <script src="lib/reveal.js/js/head.min.js"></script>
     <script src="lib/reveal.js/js/reveal.js"></script>
     <script src="lib/highlight/highlight.js"></script>
     <script src="lib/init.js"></script>
-
-
-
   </body>
 </html>
