@@ -24,6 +24,7 @@ Type fields
     Number | Mnemonic   | Description
     -------+------------+-------------
     0x0001 | CHAIN_AQ   | Aquisition request
+    0x0002 | PING       | Ping
            |            |
     0x0100 | BRICK_CONT | Brick container
     0x0101 | BRICK_NAME | Human readable name of a brick
@@ -64,6 +65,14 @@ Upon receivial of an `CHAIN_AQ` packet a ...
   bytecode buffer and optionally start executing it.
   The hop should also check the checksum and return a ERR_TX packet
   if it did not match.
+
+  PING
+  ------
+
+      PING (16bit)
+
+  Signals the next brick, that it is connected to the previous brick
+
 
 BRICK_CONT
 ----------
