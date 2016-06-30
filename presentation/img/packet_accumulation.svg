@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg2"
+   viewBox="0 0 480 270.00001"
+   height="270"
+   width="480"
+   opacity="0.1">
+  <defs
+     id="defs4">
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6139"
+       style="overflow:visible">
+      <path
+         id="path6141"
+         style="fill:#646464;fill-opacity:1;fill-rule:evenodd;stroke:#646464;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+    <marker
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6073"
+       style="overflow:visible">
+      <path
+         id="path6075"
+         style="fill:#646464;fill-opacity:1;fill-rule:evenodd;stroke:#646464;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#646464;fill-opacity:1;fill-rule:evenodd;stroke:#646464;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path5816" />
+    </marker>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-782.36214)"
+     id="layer1">
+    <rect
+       y="1001.9229"
+       x="25.439056"
+       height="30"
+       width="60"
+       id="rect4138"
+       style="fill:#263d43;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none" />
+    <text
+       id="text4140"
+       y="1019.0037"
+       x="29.938477"
+       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         id="tspan4144"
+         y="1019.0037"
+         x="29.938477">CHAIN_AQ</tspan></text>
+    <rect
+       style="fill:#263043;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5618"
+       width="60"
+       height="30"
+       x="85.439247"
+       y="1001.9229" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="101.77319"
+       y="1019.8724"
+       id="text5620"><tspan
+         x="101.77319"
+         y="1019.8724"
+         id="tspan5622">LEN</tspan></text>
+    <rect
+       style="fill:#2d2643;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5628"
+       width="60"
+       height="30"
+       x="145.43924"
+       y="1001.9229" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="149.90253"
+       y="1019.8724"
+       id="text5630"><tspan
+         x="149.90253"
+         y="1019.8724"
+         id="tspan5632">CHSUM</tspan></text>
+    <rect
+       style="fill:#8bc037;fill-opacity:1;stroke:#dbe2e3;stroke-width:1.04176712;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5660"
+       width="84.836235"
+       height="29.836731"
+       x="205.52089"
+       y="1002.0045" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#2c2c2c;fill-opacity:0.91044778;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="209.90253"
+       y="1019.8724"
+       id="text5662"><tspan
+         x="209.90253"
+         y="1019.8724"
+         id="tspan5664">INFO BRK 1</tspan></text>
+    <rect
+       y="902.00439"
+       x="205.52087"
+       height="29.836731"
+       width="84.836235"
+       id="rect5713"
+       style="fill:#94c037;fill-opacity:1;stroke:#dbe2e3;stroke-width:1.04176712;stroke-miterlimit:4;stroke-dasharray:none" />
+    <text
+       id="text5715"
+       y="919.8725"
+       x="209.90253"
+       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#2c2c2c;fill-opacity:0.91044778;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="919.8725"
+         x="209.90253"
+         id="tspan5725">INFO BRK 2</tspan></text>
+    <rect
+       style="fill:#8bc037;fill-opacity:1;stroke:#dbe2e3;stroke-width:1.04176712;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5719"
+       width="84.836235"
+       height="29.836731"
+       x="290.52087"
+       y="902.00439" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#2c2c2c;fill-opacity:0.91044778;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="294.90253"
+       y="919.8725"
+       id="text5721"><tspan
+         x="294.90253"
+         y="919.8725"
+         id="tspan5723">INFO BRK 1</tspan></text>
+    <g
+       transform="translate(0,-110.8784)"
+       id="g5689">
+      <rect
+         y="1012.8013"
+         x="25.439056"
+         height="30"
+         width="60"
+         id="rect5691"
+         style="fill:#263d43;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none" />
+    </g>
+    <g
+       id="g5697"
+       transform="translate(60.000192,-110.8784)">
+      <rect
+         style="fill:#263043;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect5699"
+         width="60"
+         height="30"
+         x="25.439056"
+         y="1012.8013" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="41.773003"
+         y="1030.7509"
+         id="text5701"><tspan
+           x="41.773003"
+           y="1030.7509"
+           id="tspan5703">LEN</tspan></text>
+    </g>
+    <g
+       id="g5705"
+       transform="translate(120.00019,-110.8784)">
+      <rect
+         style="fill:#2d2643;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect5707"
+         width="60"
+         height="30"
+         x="25.439056"
+         y="1012.8013" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="29.902344"
+         y="1030.7509"
+         id="text5709"><tspan
+           x="29.902344"
+           y="1030.7509"
+           id="tspan5711">CHSUM</tspan></text>
+    </g>
+    <rect
+       style="fill:#94c037;fill-opacity:1;stroke:#dbe2e3;stroke-width:1.04176712;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect5747"
+       width="84.836235"
+       height="29.836731"
+       x="290.52087"
+       y="802.00439" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#2c2c2c;fill-opacity:0.91044778;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="294.90253"
+       y="819.8725"
+       id="text5749"><tspan
+         id="tspan5751"
+         x="294.90253"
+         y="819.8725">INFO BRK 2</tspan></text>
+    <rect
+       y="802.00439"
+       x="375.52087"
+       height="29.836731"
+       width="84.836235"
+       id="rect5753"
+       style="fill:#8bc037;fill-opacity:1;stroke:#dbe2e3;stroke-width:1.04176712;stroke-miterlimit:4;stroke-dasharray:none" />
+    <text
+       id="text5755"
+       y="819.8725"
+       x="379.90253"
+       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#2c2c2c;fill-opacity:0.91044778;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         id="tspan5757"
+         y="819.8725"
+         x="379.90253">INFO BRK 1</tspan></text>
+    <rect
+       y="801.92285"
+       x="25.439056"
+       height="30"
+       width="60"
+       id="rect5761"
+       style="fill:#263d43;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       transform="translate(60.000192,-210.8784)"
+       id="g5767">
+      <rect
+         y="1012.8013"
+         x="25.439056"
+         height="30"
+         width="60"
+         id="rect5769"
+         style="fill:#263043;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         id="text5771"
+         y="1030.7509"
+         x="41.773003"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan5773"
+           y="1030.7509"
+           x="41.773003">LEN</tspan></text>
+    </g>
+    <g
+       transform="translate(120.00019,-210.8784)"
+       id="g5775">
+      <rect
+         y="1012.8013"
+         x="25.439056"
+         height="30"
+         width="60"
+         id="rect5777"
+         style="fill:#2d2643;fill-opacity:1;stroke:#dbe2e3;stroke-width:0.87849748;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         id="text5779"
+         y="1030.7509"
+         x="29.902344"
+         style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           id="tspan5781"
+           y="1030.7509"
+           x="29.902344">CHSUM</tspan></text>
+    </g>
+    <rect
+       y="802.00439"
+       x="205.52089"
+       height="29.836731"
+       width="84.836235"
+       id="rect5783"
+       style="fill:#aac037;fill-opacity:1;stroke:#dbe2e3;stroke-width:1.04176712;stroke-miterlimit:4;stroke-dasharray:none" />
+    <text
+       id="text5785"
+       y="819.8725"
+       x="209.90254"
+       style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#2c2c2c;fill-opacity:0.91044778;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="819.8725"
+         x="209.90254"
+         id="tspan5787">INFO BRK 3</tspan></text>
+    <path
+       id="path5789"
+       d="m 250.26773,991.93988 80.06734,-50.76271"
+       style="fill:none;fill-rule:evenodd;stroke:#646464;stroke-width:1.00000012;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#646464;stroke-width:1.00000012;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker6073)"
+       d="m 330.26773,891.93984 80.06734,-50.76268"
+       id="path6071" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#646464;stroke-width:1.00000012;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker6139)"
+       d="m 250.26773,891.93984 80.06734,-50.76271"
+       id="path6137" />
+    <text
+       id="text6623"
+       y="962.56012"
+       x="146.07739"
+       style="font-style:normal;font-weight:normal;font-size:12.50000095px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="962.56012"
+         x="146.07739"
+         id="tspan6625">Datagram from last brick to</tspan><tspan
+         id="tspan6627"
+         y="978.18512"
+         x="146.07739">second to last brick.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:12.50000095px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="146.07739"
+       y="862.56012"
+       id="text6629"><tspan
+         id="tspan6631"
+         x="146.07739"
+         y="862.56012">Datagram from second to last brick to</tspan><tspan
+         x="146.07739"
+         y="878.18512"
+         id="tspan6633">third to last brick.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="29.938477"
+       y="919.00372"
+       id="text3403"><tspan
+         x="29.938477"
+         y="919.00372"
+         id="tspan3405">CHAIN_AQ</tspan></text>
+    <text
+       id="text3407"
+       y="819.00372"
+       x="29.938477"
+       style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         id="tspan3409"
+         y="819.00372"
+         x="29.938477">CHAIN_AQ</tspan></text>
+  </g>
+</svg>
