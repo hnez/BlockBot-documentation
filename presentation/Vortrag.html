@@ -88,10 +88,64 @@
 
           <section>
             <h5>Gehäuse</h5>
+
+            <p>Werden gefräst oder 3D-Gedruckt</p>
+            <img src="img/brick_cad.png" />
+          </section>
+
+          <section>
+            <h5>Gehäuse</h5>
+            <p>Umwandlung der 3D-Modelle in Produktionsdateien:</p>
+
+            <ul>
+              <li>Zum Drucken steht gute, freie Software zur Verfügung</li>
+              <li>Zum Fräsen nicht</li>
+            </ul>
+          </section>
+
+          <section>
+            <h5>Gehäuse</h5>
+
+            <p>
+              <a href="https://github.com/hnez/PYcode">PYCode</a>
+              Werkzeugpfad in Python beschreiben und in GCode umwandeln
+            </p>
+
+            <img src="img/pycode.png" />
+          </section>
+
+          <section>
+            <h5>Gehäuse</h5>
+
+            <img style="width:50%" src="img/mill.jpg" />
+          </section>
+
+          <section>
+            <h5>Gehäuse</h5>
+
+            <ul>
+              <li>Magnete sorgen für mechanische Verbindung</li>
+              <li>
+                Alufolie und <span title="Doppelseitiges Klebeband">DsK</span>
+                sorgen für elektrischen Kontakt (VCC, GND, RX, TX)
+              </li>
+            </ul>
+
+            <img style="width:50%" src="img/kloetze.jpg" />
           </section>
 
           <section>
             <h5>Platine</h5>
+
+            <p>Enthält ATtiny85, Schutzbeschaltung, LEDs und einen Taster/ein Potentiometer</p>
+            <img style="background-color: rgb(23, 23, 23); height: 8em" src="img/kloetzepcbsch.svg" />
+          </section>
+
+          <section>
+            <h5>Platine</h5>
+
+            <p>Wird von hinten in das Gehäuse gedrückt</p>
+            <img style="width:60%" src="img/kloetzepcbimg.jpg" />
           </section>
 
           <section>
@@ -102,17 +156,33 @@
         <section>
           <h3>Übertragungseinheit</h3>
 
-
           <section>
             <h5>Gehäuse</h5>
+
+            <p>Wie bei den Klötzen</p>
           </section>
 
           <section>
             <h5>Platine</h5>
+
+            <p>Enthält ATmega328, Strombegrenzte Spannungsversorgung für die Klötze und ein Funkmodul</p>
+            <img style="background-color: rgb(23, 23, 23); height: 7em" src="img/remotesch.svg" />
+          </section>
+
+          <section>
+            <h5>Platine</h5>
+
+            <p>Spannungsversorgung über Steckernetzteil oder Batteriepack</p>
+            <img style="width:60%" src="img/remotepic.jpg" />
           </section>
 
           <section>
             <h5>Firmware</h5>
+
+            <ul>
+              <li>Stellt Brücke zwischen Klötzen und Auto her</li>
+              <li>Könnte aktuell ausgeführten Klotz auf Display anzeigen</li>
+            </ul>
           </section>
         </section>
 
@@ -121,14 +191,135 @@
 
           <section>
             <h5>Basis</h5>
+
+            <ul>
+              <li>Basiert auf der Hardware eines LEGO® Spybotics®</li>
+              <li>
+                Elektronisch komplett entkernt und mit einem
+                <strike>ATtiny44</strike> <strike>ATmega8</strike> ATmega328
+                ausgestattet
+              </li>
+              <li>Um Trademark Quatsch zu umgehen als dk_base (Denmark base) bezeichnet</li>
+            </ul>
+          </section>
+
+          <section>
+            <img style="width:60%" src="img/dk_base.jpg" />
           </section>
 
           <section>
             <h5>Platine</h5>
+
+            <ul>
+              <li>Einseitig, auf CNC-Maschine ausgefräst.</li>
+              <li>Enthält nicht (mehr) mehr als zwei H-Brücken</li>
+            </ul>
+
+            <img style="background-color: rgb(23, 23, 23); height: 7em" src="img/denmarkbasesch.svg" />
           </section>
 
           <section>
             <h5>Firmware</h5>
+
+            <ul>
+              <li>Führt die in den Klötzen kodierten Schritte aus</li>
+              <li>Eine vernünftige Kodierung könnten wie folgt aussehen:</li>
+              <li>Zwei Bytes Befehl. Z.B. 0x0001, Setze Motoren</li>
+              <li>Zwei Bytes Parameter. Z.B. 0x7f7f Motor rechts und links. Vollgas vorran</li>
+            </ul>
+          </section>
+
+          <section>
+            <!-- https://www.youtube.com/watch?v=pGS8WX1zX2M#t=23m28s -->
+
+            <p style="font-size: 120%">"Das muss mehr reinballern"</p>
+            <p style="margin-left: 40%">- Leonard</p>
+          </section>
+
+          <section>
+            <h5>Virtuelle Maschine</h5>
+
+            <p style="font-size: 75%">
+              Links:
+              <a href="https://github.com/hnez/BlockBot-documentation/blob/master/protocols/bytecode.md">
+                Spezifikation
+              </a>
+              /
+              <a href="https://github.com/hnez/BlockBot-firmware/blob/master/interpreter/opcodes.c">
+                Implementierung
+              </a>
+            </p>
+
+            <pre style="box-shadow: unset"><code>
+Instr bits  | Name       | Description
+------------+------------+------------
+00 00 01 00 | SOV        | Skip if last arith. instr. gen…
+00 00 01 01 | SPU        | Push current PC and RC to stack
+00 00 01 10 | SPO        | Pop RC and fill PC buffer from stack
+00 00 01 11 | SPJ        | Perform the jump in the PC buffer
+            |            |
+00 00 10 XX | LD  XX     | Load next Byte into register XX a…
+            |            |
+00 01 00 XX | DEC XX     | Decrement register XX by one
+00 01 01 XX | INC XX     | Increment register XX by one
+00 01 10 XX | NOT XX     | Bitwise NOT of Register XX
+00 01 11 XX | SRR XX     | Shift register right by one bit
+...
+            </code></pre>
+          </section>
+
+          <section>
+            <h5>Virtuelle Maschine</h5>
+
+            <ul>
+              <li>20 Opcodes. 8-bit instruction Kodierung um Speicherplatz zu sparen.</li>
+              <li>Drei general purpose 8bit register. Ein zero Register.</li>
+              <li>
+                Acht IO Adressen.
+                Aktuell genutz für: Motor1, Motor2, acht digitale Eingänge (z.B. Bumper Taster),
+                acht digitale Ausgänge (z.B. LEDs), ein 8 bit Timer, 3 Ram Slots.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h5>Programme</h5>
+
+            <pre style="box-shadow: unset"><code>
+ LD RA          // Load motor speed and direction
+ 64             // Fwd 50%
+ LD RB          // Load time to drive for
+ 120            // Two seconds
+ STA Mot1 RA    // Set Motor 1
+ STA Mot2 RA    // Set Motor 2
+ STA Timer RB   // Setup timer
+
+loop:
+ LDA Timer RC   // Read timer value
+ SEQ RZ RC      // Skip next instruction if time is up
+ JBW loop       // Loop
+
+ STA Mot1 RZ    // Stop Motor 1
+ STA Mot2 RZ    // Stop Motor 2</code></pre>
+          </section>
+
+          <section>
+            <h5>Assembler (brkas)</h5>
+
+            <pre style="box-shadow: unset"><code>
+$ ./brkas.py source_in small.brkas bytecode_out small.brbc
+
+$ hd small.brbc
+00000000  09 40 0a 78 e1 e5 f2 d3  a3 31 e0 e4</code></pre>
+
+            <ul>
+              <li>Übersetzt Programmtext in Bytecode</li>
+              <li>
+                <a href="https://github.com/hnez/BlockBot-firmware/blob/master/brkas/brkas.py">Geschrieben</a>
+                in Python
+              </li>
+              <li>Enthält auch einen Disassembler</li>
+            </ul>
           </section>
         </section>
 
@@ -159,7 +350,84 @@ Better active clock
 
           <section>
             <h5>Unit tests</h5>
+
+            <ul>
+              <li>Mikrocontroller verfügen über kaum Ein-/Ausgabemöglichkeiten</li>
+              <li>Programme zu Debuggen deshalb sehr mühsam</li>
+              <li>
+                Deshalb: Tests schreiben, die auf dem Host Computer ausgeführt werden
+                und prüfen, ob sich Teile des Programms wie erwartet verhalten.
+              </li>
+            </ul>
           </section>
+
+          <section>
+            <h5>Unit tests</h5>
+
+            <pre style="box-shadow: unset; font-size:40%"><code>
+static char *<a href="https://github.com/hnez/BlockBot-firmware/blob/master/interpreter/tests/tst-opcodes.c#L159">test_op_jfw</a>()
+{
+  struct vm_status_t vm;
+  uint8_t prog[]={0x44, 0x15, 0x24, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15};
+  // MOV RA RZ, INC RA, JFW 4, INC RA, INC RA, INC RA, INC RA, INC RA, INC RA
+
+  bzero(&vm, sizeof(vm));
+
+  vm.prog= prog;
+  vm.prog_len= sizeof(prog);
+
+  vm_run(&vm);
+
+  mu_assert("Something went wrong in program containing JFW",
+    vm.regs[0] == 3);
+
+  return 0;
+}</pre></code>
+          </section>
+
+          <section>
+            <h5>Unit tests</h5>
+
+            <pre style="box-shadow: unset"><code>
+$ make tests
+gcc -ffunction-sections -fdata-sections -Os -Wall -Wextra \
+-pedantic -Werror -Wshadow -Wstrict-overflow \
+-fno-strict-aliasing -std=c11 \
+-I ../ -o tests/tst-opcodes.test tests/tst-opcodes.c
+./tests/tst-opcodes.test
+
+ALL TESTS PASSED
+Tests run: 10
+rm tests/tst-opcodes.test</pre></code>
+          </section>
+        </section>
+
+        <section>
+          <h5>Ausblick</h5>
+
+          <p style="font-size: 60%">Alle Quelldateien stehen unter einer freien Lizenz zum Download bereit</p>
+
+          <ul style="font-size: 50%">
+            <li>
+              Firmware/Assembler - GPLv3+ -
+              <a href="https://github.com/hnez/BlockBot-firmware/">github.com/hnez/BlockBot-firmware</a>
+            </li>
+
+            <li>
+              Spezifikationen - GNU FDL -
+              <a href="https://github.com/hnez/BlockBot-documentation/">github.com/hnez/BlockBot-documentation</a>
+            </li>
+
+            <li>
+              PCB Design - CERN OHL -
+              <a href="https://github.com/hnez/BlockBot-pcb/">github.com/hnez/BlockBot-pcb</a>
+            </li>
+
+            <li>
+              Gehäuse Design - CERN OHL -
+              <a href="https://github.com/hnez/BlockBot-housing/">github.com/hnez/BlockBot-housing</a>
+            </li>
+          </ul>
         </section>
 
         <section>
@@ -177,7 +445,10 @@ Better active clock
             <p style="font-size:60%"><a href="https://zerforscht.de">zerforscht.de</a></p>
           </div>
 
-          <a style="color: white; font-size: 50%; top: 4em;" href="https://leonard.goehrs.eu/etp">leonard.goehrs.eu/etp</a>
+          <div style="font-size: 50%; top: 4em;">
+            <p style="margin-bottom: 0">Vortragsfolien:</p>
+            <a style="color: white;"href="https://leonard.goehrs.eu/etp">leonard.goehrs.eu/etp</a>
+          </div>
         </section>
       </div>
     </div>
