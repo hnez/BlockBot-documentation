@@ -45,6 +45,11 @@
         line-height: 1;
       }
 
+      .bgedsection {
+        background-color: rgba(0, 0, 0, 0.38);
+        border-radius: 1em;
+      }
+
       .reinballern {
         width: 50%;
         background: unset !important;
@@ -149,11 +154,10 @@
             <img style="width:50%" src="img/kloetze.jpg" />
           </section>
 
-          <section>
+          <section data-background-image="img/kloetzepcbsch.svg" class="bgedsection">
             <h5>Platine</h5>
 
             <p>Enthält ATtiny85, Schutzbeschaltung, LEDs und einen Taster/ein Potentiometer</p>
-            <img style="background-color: rgb(23, 23, 23); height: 8em" src="img/kloetzepcbsch.svg" />
           </section>
 
           <section>
@@ -201,8 +205,7 @@ if (uart.flags.forward) {
   else               TX_PORT&= ~_BV(TX_NUM);
 
   b_send>>=1;
-}
-            </code></pre>
+}</code></pre>
           </section>
 
         </section>
@@ -216,11 +219,10 @@ if (uart.flags.forward) {
             <p>Wie bei den Klötzen</p>
           </section>
 
-          <section>
+          <section data-background-image="img/remotesch.svg" class="bgedsection">
             <h5>Platine</h5>
 
             <p>Enthält ATmega328, Strombegrenzte Spannungsversorgung für die Klötze und ein Funkmodul</p>
-            <img style="background-color: rgb(23, 23, 23); height: 7em" src="img/remotesch.svg" />
           </section>
 
           <section>
@@ -244,7 +246,7 @@ if (uart.flags.forward) {
           <h3>Auto</h3>
 
           <section data-background-video="https://leonard.goehrs.eu/dk_crop.webm" data-background-video-loop data-background-video-muted
-                   style="background-color: rgba(0, 0, 0, 0.38); border-radius: 1em;">
+                   class="bgedsection">
             <h5>Basis</h5>
 
             <ul>
@@ -262,15 +264,13 @@ if (uart.flags.forward) {
             <img style="width:60%" src="img/dk_base.jpg" />
           </section>
 
-          <section>
+          <section data-background-image="img/denmarkbasesch.svg" class="bgedsection">
             <h5>Platine</h5>
 
             <ul>
               <li>Einseitig, auf CNC-Maschine ausgefräst.</li>
               <li>Enthält nicht (mehr) mehr als zwei H-Brücken</li>
             </ul>
-
-            <img style="background-color: rgb(23, 23, 23); height: 7em" src="img/denmarkbasesch.svg" />
           </section>
 
           <section>
@@ -457,7 +457,7 @@ rm tests/tst-opcodes.test</pre></code>
           </section>
         </section>
 
-        <section>
+        <section data-background-image="img/gnu.svg" class="bgedsection">
           <h5>Ausblick</h5>
 
           <p style="font-size: 60%">Alle Quelldateien stehen unter einer freien Lizenz zum Download bereit</p>
