@@ -54,3 +54,5 @@ Reveal.addEventListener( 'slidechanged', function( event ) {
 
 
 });
+
+hljs.initHighlightingOnLoad();

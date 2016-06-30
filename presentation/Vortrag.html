@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="lib/reveal.js/css/reveal.css" />
     <link rel="stylesheet" href="lib/reveal.js/css/theme/black.css" id="theme" />
 
+    <link rel="stylesheet" href="lib/highlight/xcode.css">
+
+
     <script>
       var link = document.createElement( 'link' );
       link.rel = 'stylesheet';
@@ -148,9 +151,48 @@
             <img style="width:60%" src="img/kloetzepcbimg.jpg" />
           </section>
 
+          <!-- Marker !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
           <section>
-            <h5>Firmware</h5>
+            <h5>Firmware <3</h5>
+
+            <ul>
+              <li>Verfügt über kodierte Schritte für das Auto</li>
+              <li>Gibt diese Schritte an den nächsten Block weiter</li>
+              <li>Dieser gibt diese Schritte, zusammen mit seinen eigenen, wiederum an den nächsten Block weiter</li>
+            </ul>
           </section>
+
+          <section>
+            <h5>Firmware <3</h5>
+
+            <img style="width:50%" src="img/brickschema.png" />
+            <img style="width:30%" src="img/arduinodebugging.jpg" />
+
+          </section>
+
+          <section>
+            <h5>Firmware <3</h5>
+
+            <pre style="box-shadow: unset;"><code style="max-height: 450px;">
+b_rcvd>>=1;
+
+if (RX_PIN & _BV(RX_NUM)) {
+  // Sender sent a high bit
+  b_rcvd|= _BV(7);
+}
+
+
+if (uart.flags.forward) {
+  // Forward the data bit if forwarding is requested
+
+  if (b_send & 0x01) TX_PORT|=  _BV(TX_NUM);
+  else               TX_PORT&= ~_BV(TX_NUM);
+
+  b_send>>=1;
+}
+            </code></pre>
+          </section>
+
         </section>
 
         <section>
@@ -230,10 +272,11 @@
           </section>
 
           <section>
-            <!-- https://www.youtube.com/watch?v=pGS8WX1zX2M#t=23m28s -->
+            <!-- https://www.youtube.com/watch?v=pGS8WX1zX2M#t=23m28s  Kannte ich natürlich schon :D-->
 
             <p style="font-size: 120%">"Das muss mehr reinballern"</p>
             <p style="margin-left: 40%">- Leonard</p>
+            <!-- Übersehe ich hier was, oder klaust du Zitate? -->
           </section>
 
           <section>
@@ -249,7 +292,7 @@
                 Implementierung
               </a>
             </p>
-
+            <!-- <pre><code class="nohighlight">...</code></pre> falls interesse besteht-->
             <pre style="box-shadow: unset"><code>
 Instr bits  | Name       | Description
 ------------+------------+------------
@@ -285,6 +328,7 @@ Instr bits  | Name       | Description
           <section>
             <h5>Programme</h5>
 
+            <!-- <pre><code class="nohighlight">...</code></pre> falls interesse besteht-->
             <pre style="box-shadow: unset"><code>
  LD RA          // Load motor speed and direction
  64             // Fwd 50%
@@ -456,6 +500,10 @@ rm tests/tst-opcodes.test</pre></code>
 
     <script src="lib/reveal.js/js/head.min.js"></script>
     <script src="lib/reveal.js/js/reveal.js"></script>
+    <script src="lib/highlight/highlight.js"></script>
     <script src="lib/init.js"></script>
+
+
+
   </body>
 </html>
