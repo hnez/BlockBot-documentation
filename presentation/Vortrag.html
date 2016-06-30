@@ -293,8 +293,7 @@ if (uart.flags.forward) {
                 Implementierung
               </a>
             </p>
-            <!-- <pre><code class="nohighlight">...</code></pre> falls interesse besteht-->
-            <pre style="box-shadow: unset"><code>
+            <pre style="box-shadow: unset"><code class="nohighlight">
 Instr bits  | Name       | Description
 ------------+------------+------------
 00 00 01 00 | SOV        | Skip if last arith. instr. gen…
@@ -329,8 +328,7 @@ Instr bits  | Name       | Description
           <section>
             <h5>Programme</h5>
 
-            <!-- <pre><code class="nohighlight">...</code></pre> falls interesse besteht-->
-            <pre style="box-shadow: unset"><code>
+            <pre style="box-shadow: unset"><code class="nohighlight">
  LD RA          // Load motor speed and direction
  64             // Fwd 50%
  LD RB          // Load time to drive for
@@ -351,7 +349,7 @@ loop:
           <section>
             <h5>Assembler (brkas)</h5>
 
-            <pre style="box-shadow: unset"><code>
+            <pre style="box-shadow: unset"><code class="nohighlight">
 $ ./brkas.py source_in small.brkas bytecode_out small.brbc
 
 $ hd small.brbc
@@ -378,7 +376,7 @@ $ hd small.brbc
           <section data-background-video="https://leonard.goehrs.eu/etp_vidbg.webm" data-background-video-loop data-background-video-muted>
             <h5>Versionsverwaltung (git)</h5>
 
-            <pre style="box-shadow: unset"><code>
+            <pre style="box-shadow: unset"><code class="nohighlight">
 commit 0df71ce5066dcfa8f88049d3dd0e514a56db26ab
 Author: Leonard Göhrs leonard@goehrs.eu
 Date:   Thu May 26 11:38:07 2016 +0200
@@ -409,7 +407,7 @@ Better active clock
           <section>
             <h5>Unit tests</h5>
 
-            <pre style="box-shadow: unset; font-size:40%"><code>
+            <pre style="box-shadow: unset; font-size:40%"><code class="nohighlight">
 static char *<a href="https://github.com/hnez/BlockBot-firmware/blob/master/interpreter/tests/tst-opcodes.c#L159">test_op_jfw</a>()
 {
   struct vm_status_t vm;
@@ -433,7 +431,7 @@ static char *<a href="https://github.com/hnez/BlockBot-firmware/blob/master/inte
           <section>
             <h5>Unit tests</h5>
 
-            <pre style="box-shadow: unset"><code>
+            <pre style="box-shadow: unset"><code class="nohighlight">
 $ make tests
 gcc -ffunction-sections -fdata-sections -Os -Wall -Wextra \
 -pedantic -Werror -Wshadow -Wstrict-overflow \
