@@ -190,9 +190,9 @@
             <h5>Firmware <3</h5>
 
             <pre style="box-shadow: unset;"><code style="max-height: 450px;">
-b_rcvd>>=1;
+b_rcvd&gt;&gt;=1;
 
-if (RX_PIN & _BV(RX_NUM)) {
+if (RX_PIN &amp; _BV(RX_NUM)) {
   // Sender sent a high bit
   b_rcvd|= _BV(7);
 }
@@ -201,10 +201,10 @@ if (RX_PIN & _BV(RX_NUM)) {
 if (uart.flags.forward) {
   // Forward the data bit if forwarding is requested
 
-  if (b_send & 0x01) TX_PORT|=  _BV(TX_NUM);
-  else               TX_PORT&= ~_BV(TX_NUM);
+  if (b_send &amp; 0x01) TX_PORT|=  _BV(TX_NUM);
+  else               TX_PORT&amp;= ~_BV(TX_NUM);
 
-  b_send>>=1;
+  b_send&gt;&gt;=1;
 }</code></pre>
           </section>
 
@@ -403,7 +403,7 @@ Better active clock
             </code></pre>
           </section>
 
-          <section>
+          <section data-background-iframe="img/unittestbg.html" class="bgedsection">
             <h5>Unit tests</h5>
 
             <ul>
@@ -426,12 +426,12 @@ static char *<a href="https://github.com/hnez/BlockBot-firmware/blob/master/inte
   uint8_t prog[]={0x44, 0x15, 0x24, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15};
   // MOV RA RZ, INC RA, JFW 4, INC RA, INC RA, INC RA, INC RA, INC RA, INC RA
 
-  bzero(&vm, sizeof(vm));
+  bzero(&amp;vm, sizeof(vm));
 
   vm.prog= prog;
   vm.prog_len= sizeof(prog);
 
-  vm_run(&vm);
+  vm_run(&amp;vm);
 
   mu_assert("Something went wrong in program containing JFW",
     vm.regs[0] == 3);
@@ -508,13 +508,9 @@ rm tests/tst-opcodes.test</pre></code>
       </div>
     </div>
 
-
     <script src="lib/reveal.js/js/head.min.js"></script>
     <script src="lib/reveal.js/js/reveal.js"></script>
     <script src="lib/highlight/highlight.js"></script>
     <script src="lib/init.js"></script>
-
-
-
   </body>
 </html>
