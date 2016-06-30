@@ -66,12 +66,12 @@ Upon receivial of an `CHAIN_AQ` packet a ...
   The hop should also check the checksum and return a ERR_TX packet
   if it did not match.
 
-  PING
-  ------
+PING
+----
 
-      PING (16bit)
+    PING (16bit)
 
-  Signals the next brick, that it is connected to the previous brick
+Signals the next brick, that it is connected to the previous brick.
 
 
 BRICK_CONT
