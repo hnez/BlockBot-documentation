@@ -292,7 +292,7 @@ if (uart.flags.forward) {
             <p style="margin-left: 40%">- Leonard</p>
           </section>
 
-          <section>
+          <section data-background-iframe="img/bytecode.html" class="bgedsection">
             <h5>Virtuelle Maschine</h5>
 
             <p style="font-size: 75%">
@@ -308,9 +308,7 @@ if (uart.flags.forward) {
             <pre style="box-shadow: unset"><code class="nohighlight">
 Instr bits  | Name       | Description
 ------------+------------+------------
-00 00 01 00 | SOV        | Skip if last arith. instr. gen…
-00 00 01 01 | SPU        | Push current PC and RC to stack
-00 00 01 10 | SPO        | Pop RC and fill PC buffer from stack
+...         |            |
 00 00 01 11 | SPJ        | Perform the jump in the PC buffer
             |            |
 00 00 10 XX | LD  XX     | Load next Byte into register XX a…
@@ -319,7 +317,7 @@ Instr bits  | Name       | Description
 00 01 01 XX | INC XX     | Increment register XX by one
 00 01 10 XX | NOT XX     | Bitwise NOT of Register XX
 00 01 11 XX | SRR XX     | Shift register right by one bit
-...
+...         |            |
             </code></pre>
           </section>
 
