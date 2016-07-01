@@ -2,9 +2,10 @@
   <head>
     <link rel="stylesheet" href="../lib/highlight/xcode.css">
     <script src="../lib/highlight/highlight.js"></script>
+    <script src="../lib/smoothscrolling.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
   </head>
-  
+
   <body style="width: 75%; margin: 2em auto; font-size: 130%; color: rgba(255, 255, 255, 0.34);
                height: 100%; overflow: hidden; opacity: 0.5">
     <pre><code class="c">
@@ -344,5 +345,10 @@ int main (__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
   return result != 0;
 }
       </code>;</pre>
+    <div name="anchor" id="anchor"> </div>
   </body>
+
+  <script>
+  smoothScroll("anchor");
+  </script>
 </html>
