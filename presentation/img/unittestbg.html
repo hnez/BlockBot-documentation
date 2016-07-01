@@ -1,64 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.47 in css mode. -->
 <html>
   <head>
-    <link rel="stylesheet" href="../lib/highlight/xcode.css">
-    <script src="../lib/highlight/highlight.js"></script>
+    <title>tst-opcodes.c</title>
     <script src="../lib/smoothscrolling.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <style type="text/css">
+    <!--
+      body {
+        color: #ffffff;
+        background-color: #002b36;
+        font-family: "Hack";
+        font-size: 1.2em;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #b58900;
+      }
+      .comment-delimiter {
+        /* font-lock-comment-delimiter-face */
+        color: #b58900;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #6c71c4;
+        font-weight: bold;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #268bd2;
+        font-weight: bold;
+      }
+      .preprocessor {
+        /* font-lock-preprocessor-face */
+        color: #2aa198;
+        font-weight: bold;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #dc322f;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #859900;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #93a1a1;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
   </head>
+  <body>
+    <pre>
+<span class="preprocessor">#include</span> <span class="string">&lt;stdint.h&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;stdio.h&gt;</span>
 
-  <body style="width: 75%; margin: 2em auto; font-size: 130%; color: rgba(255, 255, 255, 0.34);
-               height: 100%; overflow: hidden; opacity: 0.9">
-    <pre><code class="c">
-#include &lt;stdint.h&gt;
-#include &lt;stdio.h&gt;
+<span class="type">int</span> <span class="variable-name">tests_run</span> = 0;
 
-int tests_run = 0;
+<span class="preprocessor">#define</span> <span class="variable-name">__UNIT_TEST__</span>
+<span class="preprocessor">#define</span> <span class="variable-name">main</span> main_orig
 
-#define __UNIT_TEST__
-#define main main_orig
+<span class="preprocessor">#define</span> <span class="variable-name">PROGMEM</span>
 
-#define PROGMEM
-
-typedef void (fktptr_t)(void);
-inline fktptr_t *pgm_read_fktptr(const void *orig)
+<span class="keyword">typedef</span> <span class="type">void</span> (<span class="type">fktptr_t</span>)(<span class="type">void</span>);
+<span class="keyword">inline</span> <span class="type">fktptr_t</span> *<span class="function-name">pgm_read_fktptr</span>(<span class="keyword">const</span> <span class="type">void</span> *<span class="variable-name">orig</span>)
 {
-  /* I actually taste a bit of puke
+  <span class="comment-delimiter">/* </span><span class="comment">I actually taste a bit of puke
    * whenever i read the line below.
-   * But it works for me (TM)*/
+   * But it works for me (TM)</span><span class="comment-delimiter">*/</span>
 
-  return ((fktptr_t *)*(uint64_t*)orig);
+  <span class="keyword">return</span> ((<span class="type">fktptr_t</span> *)*(<span class="type">uint64_t</span>*)orig);
 }
 
 
-#include "../opcodes.c"
-#include "../vm.c"
-#include "../register.c"
+<span class="preprocessor">#include</span> <span class="string">"../opcodes.c"</span>
+<span class="preprocessor">#include</span> <span class="string">"../vm.c"</span>
+<span class="preprocessor">#include</span> <span class="string">"../register.c"</span>
 
-#undef main
+<span class="preprocessor">#undef</span> main
 
-#include &lt;strings.h&gt;
-#include &lt;minunit.h&gt;
+<span class="preprocessor">#include</span> <span class="string">&lt;strings.h&gt;</span>
+<span class="preprocessor">#include</span> <span class="string">&lt;minunit.h&gt;</span>
 
-struct {
-  uint8_t values[8];
-  uint8_t should_fail;
-} mem_shim;
+<span class="keyword">struct</span> {
+  <span class="type">uint8_t</span> <span class="variable-name">values</span>[8];
+  <span class="type">uint8_t</span> <span class="variable-name">should_fail</span>;
+} <span class="variable-name">mem_shim</span>;
 
-uint8_t mem_getcb_fa(__attribute__((unused)) struct vm_status_t *vm, uint8_t addr, uint8_t *val)
+<span class="type">uint8_t</span> <span class="function-name">mem_getcb_fa</span>(<span class="keyword">__attribute__</span>((unused)) <span class="keyword">struct</span> <span class="type">vm_status_t</span> *<span class="variable-name">vm</span>, <span class="variable-name">uint8_t</span> addr, <span class="variable-name">uint8_t</span> *val)
 {
   *val= mem_shim.values[addr];
 
-  return (mem_shim.should_fail ? MEM_ERR : MEM_OK);
+  <span class="keyword">return</span> (mem_shim.should_fail ? MEM_ERR : MEM_OK);
 }
 
-uint8_t mem_setcb_fa(__attribute__((unused)) struct vm_status_t *vm, uint8_t addr, uint8_t val)
+<span class="type">uint8_t</span> <span class="function-name">mem_setcb_fa</span>(<span class="keyword">__attribute__</span>((unused)) <span class="keyword">struct</span> <span class="type">vm_status_t</span> *<span class="variable-name">vm</span>, <span class="variable-name">uint8_t</span> addr, <span class="variable-name">uint8_t</span> val)
 {
   mem_shim.values[addr]= val;
 
-  return (mem_shim.should_fail ? MEM_ERR : MEM_OK);
+  <span class="keyword">return</span> (mem_shim.should_fail ? MEM_ERR : MEM_OK);
 }
 
-const struct mem_slot mem_map[MEM_LEN]= {
+<span class="keyword">const</span> <span class="keyword">struct</span> <span class="type">mem_slot</span> <span class="variable-name">mem_map</span>[MEM_LEN]= {
   { mem_getcb_fa, mem_setcb_fa},
   { mem_getcb_fa, mem_setcb_fa},
   { mem_getcb_fa, mem_setcb_fa},
@@ -69,250 +122,250 @@ const struct mem_slot mem_map[MEM_LEN]= {
   { mem_getcb_fa, mem_setcb_fa}
 };
 
-static char *test_emptyprog()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_emptyprog</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[8];
-  bzero(&vm, sizeof(vm));
-  bzero(&prog, sizeof(prog));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[8];
+  bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
+  bzero(&amp;prog, <span class="keyword">sizeof</span>(prog));
 
   vm.prog= prog;
   vm.prog_len= 0;
 
-  mu_assert("vm_step ran an empty program",
-            vm_step(&vm) == VM_ERR);
+  mu_assert(<span class="string">"vm_step ran an empty program"</span>,
+            vm_step(&amp;vm) == VM_ERR);
 
-  bzero(&vm, sizeof(vm));
+  bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-static char *test_op_sov()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_sov</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0x11, 0x04, 0x16, 0x17}; // DEC RA, SOV, INC RB, INC RC
-  bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0x11, 0x04, 0x16, 0x17}; <span class="comment-delimiter">// </span><span class="comment">DEC RA, SOV, INC RB, INC RC
+</span>  bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
 
   vm.prog= prog;
-  vm.prog_len= sizeof(prog);
+  vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
-  vm_run(&vm);
+  vm_run(&amp;vm);
 
-  mu_assert("program including SOV did not fully execute",
-            vm.pc == sizeof(prog));
+  mu_assert(<span class="string">"program including SOV did not fully execute"</span>,
+            vm.pc == <span class="keyword">sizeof</span>(prog));
 
-  mu_assert("Something went wrong in program including SOV",
-            (vm.regs[0] == 0xff) && (vm.regs[1] == 0x00) && (vm.regs[2] == 0x01));
+  mu_assert(<span class="string">"Something went wrong in program including SOV"</span>,
+            (vm.regs[0] == 0xff) &amp;&amp; (vm.regs[1] == 0x00) &amp;&amp; (vm.regs[2] == 0x01));
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-static char *test_op_stack()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_stack</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0x44, 0x0b, 0x0a, 0x05, 0x4c, 0x15, 0x06, 0x13, 0xa3, 0x07};
-  // MOV RA RZ, LD RC, 10, SPU, MOV RC RZ, INC RA, SPO, SEQ RZ RC, SPJ
-  bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0x44, 0x0b, 0x0a, 0x05, 0x4c, 0x15, 0x06, 0x13, 0xa3, 0x07};
+  <span class="comment-delimiter">// </span><span class="comment">MOV RA RZ, LD RC, 10, SPU, MOV RC RZ, INC RA, SPO, SEQ RZ RC, SPJ
+</span>  bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
 
   vm.prog= prog;
-  vm.prog_len= sizeof(prog);
+  vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
-  vm_run(&vm);
+  vm_run(&amp;vm);
 
-  mu_assert("program including stack operations did not fully execute",
-            vm.pc == sizeof(prog));
+  mu_assert(<span class="string">"program including stack operations did not fully execute"</span>,
+            vm.pc == <span class="keyword">sizeof</span>(prog));
 
-  mu_assert("Something went wrong in program including stack operations",
-            (vm.regs[0] == 10) && (vm.regs[2] == 0));
+  mu_assert(<span class="string">"Something went wrong in program including stack operations"</span>,
+            (vm.regs[0] == 10) &amp;&amp; (vm.regs[2] == 0));
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-static char *test_op_ld()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_ld</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0x09, 0x32, 0x0a, 0x33, 0x0b, 0x34, 0x08, 0x35};
-  // LD RA, 50, LD RB, 51, LD RC, 52, LD RZ, 53
-
-  bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0x09, 0x32, 0x0a, 0x33, 0x0b, 0x34, 0x08, 0x35};
+  <span class="comment-delimiter">// </span><span class="comment">LD RA, 50, LD RB, 51, LD RC, 52, LD RZ, 53
+</span>
+  bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
 
   vm.prog= prog;
-  vm.prog_len= sizeof(prog);
+  vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
-  mu_assert("Loading into RA threw an error",
-            vm_step(&vm) == VM_OK);
+  mu_assert(<span class="string">"Loading into RA threw an error"</span>,
+            vm_step(&amp;vm) == VM_OK);
 
-  mu_assert("Loading into RA failed",
+  mu_assert(<span class="string">"Loading into RA failed"</span>,
             vm.regs[0] == 50);
 
 
-  mu_assert("Loading into RB threw an error",
-            vm_step(&vm) == VM_OK);
+  mu_assert(<span class="string">"Loading into RB threw an error"</span>,
+            vm_step(&amp;vm) == VM_OK);
 
-  mu_assert("Loading into RB failed",
+  mu_assert(<span class="string">"Loading into RB failed"</span>,
             vm.regs[1] == 51);
 
 
-  mu_assert("Loading into RC threw an error",
-            vm_step(&vm) == VM_OK);
+  mu_assert(<span class="string">"Loading into RC threw an error"</span>,
+            vm_step(&amp;vm) == VM_OK);
 
-  mu_assert("Loading into RC failed",
+  mu_assert(<span class="string">"Loading into RC failed"</span>,
             vm.regs[2] == 52);
 
 
-  mu_assert("Loading into RZ threw no error",
-            vm_step(&vm) == VM_ERR);
+  mu_assert(<span class="string">"Loading into RZ threw no error"</span>,
+            vm_step(&amp;vm) == VM_ERR);
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
 
-static char *test_op_jfw()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_jfw</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0x44, 0x15, 0x24, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15};
-  // MOV RA RZ, INC RA, JFW 4, INC RA, INC RA, INC RA, INC RA, INC RA, INC RA
-
-  bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0x44, 0x15, 0x24, 0x15, 0x15, 0x15, 0x15, 0x15, 0x15};
+  <span class="comment-delimiter">// </span><span class="comment">MOV RA RZ, INC RA, JFW 4, INC RA, INC RA, INC RA, INC RA, INC RA, INC RA
+</span>
+  bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
 
   vm.prog= prog;
-  vm.prog_len= sizeof(prog);
+  vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
-  vm_run(&vm);
+  vm_run(&amp;vm);
 
-  mu_assert("Something went wrong in program containing JFW",
+  mu_assert(<span class="string">"Something went wrong in program containing JFW"</span>,
             vm.regs[0] == 3);
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-static char *test_op_jbw()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_jbw</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0x09, 0x0a, 0x0a, 0x02, 0x12, 0x15, 0x15, 0x15, 0x15, 0x15, 0xa2, 0x36};
-  // LD RA, 10, LD RB, 2, DEC RB, INC RA, INC RA, INC RA, INC RA, INC RA, SEQ RZ RB, JBW 6
-
-  bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0x09, 0x0a, 0x0a, 0x02, 0x12, 0x15, 0x15, 0x15, 0x15, 0x15, 0xa2, 0x36};
+  <span class="comment-delimiter">// </span><span class="comment">LD RA, 10, LD RB, 2, DEC RB, INC RA, INC RA, INC RA, INC RA, INC RA, SEQ RZ RB, JBW 6
+</span>
+  bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
 
   vm.prog= prog;
-  vm.prog_len= sizeof(prog);
+  vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
-  vm_run(&vm);
+  vm_run(&amp;vm);
 
-  mu_assert("Something went wrong in program containing JFW",
+  mu_assert(<span class="string">"Something went wrong in program containing JFW"</span>,
             vm.regs[0] == 20);
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-static char *test_op_sta()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_sta</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0x09, 0, 0xe1};
-  // LD RA, 0, STA 000 RA
-
-  for (int i=0;i&lt;8;i++) {
-    bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0x09, 0, 0xe1};
+  <span class="comment-delimiter">// </span><span class="comment">LD RA, 0, STA 000 RA
+</span>
+  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">i</span>=0;i&lt;8;i++) {
+    bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
     vm.prog= prog;
-    vm.prog_len= sizeof(prog);
+    vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
     prog[1]= i+1;
-    prog[2]= (prog[2] & 0xe3) | i&lt;&lt;2;
+    prog[2]= (prog[2] &amp; 0xe3) | i&lt;&lt;2;
 
-    vm_run(&vm);
+    vm_run(&amp;vm);
 
-    mu_assert("Writing a mem addr did not yield correct result",
+    mu_assert(<span class="string">"Writing a mem addr did not yield correct result"</span>,
               mem_shim.values[i] == i+1);
   }
 
-  vm_run(&vm);
+  vm_run(&amp;vm);
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-static char *test_op_lda()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_lda</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0xc1};
-  // LDA 000 RA
-
-  for (int i=0;i&lt;8;i++) {
-    bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0xc1};
+  <span class="comment-delimiter">// </span><span class="comment">LDA 000 RA
+</span>
+  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">i</span>=0;i&lt;8;i++) {
+    bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
     vm.prog= prog;
-    vm.prog_len= sizeof(prog);
+    vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
     mem_shim.values[i] = i+1;
-    prog[0]= (prog[0] & 0xe3) | i&lt;&lt;2;
+    prog[0]= (prog[0] &amp; 0xe3) | i&lt;&lt;2;
 
-    vm_run(&vm);
+    vm_run(&amp;vm);
 
-    mu_assert("Reading a mem addr did not yield correct result",
+    mu_assert(<span class="string">"Reading a mem addr did not yield correct result"</span>,
               vm.regs[0] == i+1);
   }
 
-  vm_run(&vm);
+  vm_run(&amp;vm);
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-static char *test_op_add()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_add</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0x86};
-  // ADD RA RB
-
-  for (int ra=0; ra&lt;256; ra++) {
-    for (int rb=0; rb&lt;256; rb++) {
-      bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0x86};
+  <span class="comment-delimiter">// </span><span class="comment">ADD RA RB
+</span>
+  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">ra</span>=0; ra&lt;256; ra++) {
+    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">rb</span>=0; rb&lt;256; rb++) {
+      bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
       vm.prog= prog;
-      vm.prog_len= sizeof(prog);
+      vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
       vm.regs[0]=ra;
       vm.regs[1]=rb;
 
-      vm_run(&vm);
+      vm_run(&amp;vm);
 
-      mu_assert("Addition did not yield a correct result",
-                vm.regs[0] == (uint8_t)(ra + rb));
+      mu_assert(<span class="string">"Addition did not yield a correct result"</span>,
+                vm.regs[0] == (<span class="type">uint8_t</span>)(ra + rb));
 
-      mu_assert("Addition did not set overflow flag correctly",
-                vm.flags.overflow == ((uint8_t)(ra + rb)!=(ra + rb)));
+      mu_assert(<span class="string">"Addition did not set overflow flag correctly"</span>,
+                vm.flags.overflow == ((<span class="type">uint8_t</span>)(ra + rb)!=(ra + rb)));
     }
   }
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
 
-static char *test_op_sub()
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">test_op_sub</span>()
 {
-  struct vm_status_t vm;
-  uint8_t prog[]={0x96};
-  // SUB RA RB
-
-  for (int ra=0; ra&lt;256; ra++) {
-    for (int rb=0; rb&lt;256; rb++) {
-      bzero(&vm, sizeof(vm));
+  <span class="keyword">struct</span> <span class="type">vm_status_t</span> <span class="variable-name">vm</span>;
+  <span class="type">uint8_t</span> <span class="variable-name">prog</span>[]={0x96};
+  <span class="comment-delimiter">// </span><span class="comment">SUB RA RB
+</span>
+  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">ra</span>=0; ra&lt;256; ra++) {
+    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable-name">rb</span>=0; rb&lt;256; rb++) {
+      bzero(&amp;vm, <span class="keyword">sizeof</span>(vm));
       vm.prog= prog;
-      vm.prog_len= sizeof(prog);
+      vm.prog_len= <span class="keyword">sizeof</span>(prog);
 
       vm.regs[0]=ra;
       vm.regs[1]=rb;
 
-      vm_run(&vm);
+      vm_run(&amp;vm);
 
-      mu_assert("Substraction did not yield a correct result",
-                vm.regs[0] == (uint8_t)(ra - rb));
+      mu_assert(<span class="string">"Substraction did not yield a correct result"</span>,
+                vm.regs[0] == (<span class="type">uint8_t</span>)(ra - rb));
 
-      mu_assert("Substraction did not set overflow flag correctly",
+      mu_assert(<span class="string">"Substraction did not set overflow flag correctly"</span>,
                 vm.flags.overflow == ((ra-rb)&lt;0));
     }
   }
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-static char *all_tests() {
+<span class="keyword">static</span> <span class="type">char</span> *<span class="function-name">all_tests</span>() {
   mu_run_test(test_emptyprog);
   mu_run_test(test_op_sov);
   mu_run_test(test_op_stack);
@@ -326,29 +379,28 @@ static char *all_tests() {
   mu_run_test(test_op_add);
   mu_run_test(test_op_sub);
 
-  return 0;
+  <span class="keyword">return</span> 0;
 }
 
-int main (__attribute__((unused)) int argc, __attribute__((unused)) char **argv)
+<span class="type">int</span> <span class="function-name">main</span> (<span class="keyword">__attribute__</span>((unused)) <span class="type">int</span> <span class="variable-name">argc</span>, <span class="keyword">__attribute__</span>((unused)) <span class="type">char</span> **<span class="variable-name">argv</span>)
 {
-  char *result = all_tests();
+  <span class="type">char</span> *<span class="variable-name">result</span> = all_tests();
 
-  if (result != 0) {
-    printf("%s\n", result);
+  <span class="keyword">if</span> (result != 0) {
+    printf(<span class="string">"%s\n"</span>, result);
   }
-  else {
-    printf("ALL TESTS PASSED\n");
+  <span class="keyword">else</span> {
+    printf(<span class="string">"ALL TESTS PASSED\n"</span>);
   }
 
-  printf("Tests run: %d\n", tests_run);
+  printf(<span class="string">"Tests run: %d\n"</span>, tests_run);
 
-  return result != 0;
+  <span class="keyword">return</span> result != 0;
 }
-      </code>;</pre>
+</pre>
     <div name="anchor" id="anchor"> </div>
   </body>
-
   <script>
-  smoothScroll("anchor");
+    smoothScroll("anchor");
   </script>
 </html>
