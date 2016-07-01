@@ -15,17 +15,6 @@
 
     <link rel="stylesheet" href="lib/highlight/xcode.css">
 
-
-    <script>
-      var link = document.createElement( 'link' );
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/pdf.css' : 'css/print/paper.css';
-      document.getElementsByTagName( 'head' )[0].appendChild( link );
-    </script>
-  </head>
-
-  <body>
     <style>
       .ersatzschaltbild {
         box-shadow: unset !important;
@@ -63,6 +52,16 @@
       }
     </style>
 
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+
+  <body>
     <div class="reveal">
       <div class="slides">
         <section>
