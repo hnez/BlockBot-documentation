@@ -10,7 +10,7 @@
    viewBox="0 0 480 270.00001"
    height="270"
    width="480"
-   opacity="0.1">
+   opacity="0.3">
   <defs
      id="defs4">
     <marker
@@ -319,30 +319,6 @@
        style="fill:none;fill-rule:evenodd;stroke:#646464;stroke-width:1.00000012;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker6139)"
        d="m 250.26773,891.93984 80.06734,-50.76271"
        id="path6137" />
-    <text
-       id="text6623"
-       y="962.56012"
-       x="146.07739"
-       style="font-style:normal;font-weight:normal;font-size:12.50000095px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         y="962.56012"
-         x="146.07739"
-         id="tspan6625">Datagram from last brick to</tspan><tspan
-         id="tspan6627"
-         y="978.18512"
-         x="146.07739">second to last brick.</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:12.50000095px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="146.07739"
-       y="862.56012"
-       id="text6629"><tspan
-         id="tspan6631"
-         x="146.07739"
-         y="862.56012">Datagram from second to last brick to</tspan><tspan
-         x="146.07739"
-         y="878.18512"
-         id="tspan6633">third to last brick.</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:0.63805967;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
