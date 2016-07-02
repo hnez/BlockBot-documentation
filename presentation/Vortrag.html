@@ -167,7 +167,7 @@
             <img style="width:60%" src="img/kloetzepcbimg.jpg" />
           </section>
 
-          <section data-background-image="img/packet_accumulation.svg" data-background-size="105%" class="bgedsection">
+          <section data-background-iframe="img/uart_snippet.html" class="bgedsection">
             <h5>Firmware ♥</h5>
 
             <ul>
@@ -178,15 +178,29 @@
           </section>
 
           <section data-background-iframe="img/uart_snippet.html" class="bgedsection">
-            <h5>Firmware ♥</h5>
+            <h5>Firmware ♥ Schema</h5>
 
             <img style="width:50%" src="img/brickschema.png" />
             <img style="width:30%" src="img/arduinodebugging.jpg" />
 
           </section>
 
+          <!-- Falls noch Zeit übrig, vielleicht hier das 8kbyte flash, bzw 512Byte SRAM Bild einsetzten -->
+          <section data-background-iframe="img/uart_snippet.html" class="bgedsection">
+            <h5>Firmware ♥ Herrausforderung</h5>
+            <ul>
+              <li>Bei 512-Byte SRAM muss der Code effizient sein</li>
+              <li>Bei 8-kByte Flash Speicher und 512-Byte EEPROM müssen alle Nachrrichten effizient kodiert sein</li>
+            </ul>
+          </section>
+
+          <section data-background-image="img/packet_accumulation.svg" data-background-size="105%" class="bgedsection">
+            <h5>Firmware ♥ Funktionsweise</h5>
+            <img style="width:55%" src="img/brick_logic.png" />
+          </section>
+
           <section data-background-iframe="img/live_uart.html" class="bgedsection">
-            <h5>Firmware ♥</h5>
+            <h5>Firmware ♥ Übertragung Bitweise</h5>
 
 
             <pre style="box-shadow: unset;"><code class="c" style="max-height: 450px;">
@@ -379,22 +393,24 @@ $ hd small.brbc
         <section>
           <h3>Gelerntes</h3>
 
-          <section data-background-image="img/arduino.jpg" data-background-size="100%" class="bgedsection">
+          <section data-background-image="img/ardpic1.jpg" class="bgedsection">
             <h5>Arduino</h5>
-            <ul>
-              <li>
-                Der grundliegende Umgang mit Arduino
-              </li>
-              <li>
-                Programmierung in der Arduinoumgebung
-              </li>
-              <li>
-                Arduino als ISP
-              </li>
+            <p>
+            Der grundliegende Umgang mit Arduino
+            </p>
+            <img style="width:40%" src="img/arduino.jpg" />
+          </section>
+
+          <section data-background-image="img/ardpic1.jpg" class="bgedsection">
+            <h5>Arduino</h5>
+            <p>
+              Programmierung in der Arduinoumgebung
+            </p>
+            <img style="width:35%" src="img/arduino_gui.png" />
           </section>
 
           <!--  Hier muss ich ein Bild mit Arduino angeschlossen als ISP machen -->
-          <section>
+          <section data-background-image="img/ardpic1.jpg" class="bgedsection">
             <h5>Arduino als ISP</h5>
             <pre style="box-shadow: unset"><code class="nohighlight">
 #!/bin/sh
@@ -411,19 +427,19 @@ avrdude  -v -patmega328p -c arduino -P /dev/cu.usbmodem1421 -b 115200 -D -U flas
 
           <!-- Code? -->
           <section>
-            <h5>avr Microcontroller</h5>
+            <h5>avr Mikrocontroller</h5>
             <ul>
               <li>
-                Der Umgang mit avr Microcontrollern
+                Der Umgang mit avr Mikrocontrollern
               </li>
               <li>
-                Programmierung eines avr Microcontrollers
+                Programmierung eines avr Mikrocontrollers
               </li>
           </section>
 
           <!-- Noch ein Bild? :/ -->
           <section>
-            <h6>Programmierung eines avr Microcontrollers</h6>
+            <h6>Programmierung eines avr Mikrocontrollers</h6>
             <!-- Code? -->
           </section>
 
