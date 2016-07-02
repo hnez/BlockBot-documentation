@@ -382,7 +382,7 @@ $ hd small.brbc
           <h3>Gelerntes</h3>
 
           <section data-background-image="img/arduino.jpg" data-background-size="100%" class="bgedsection">
-            <h5>Arduino / Microcontroller</h5>
+            <h5>Arduino</h5>
             <ul>
               <li>
                 Der grundliegende Umgang mit Arduino
@@ -393,12 +393,40 @@ $ hd small.brbc
               <li>
                 Arduino als ISP
               </li>
+          </section>
+
+          <!--  Hier muss ich ein Bild mit Arduino angeschlossen als ISP machen -->
+          <section>
+            <h5>Arduino als ISP</h5>
+            <pre style="box-shadow: unset"><code class="nohighlight">
+#!/bin/sh
+
+avr-gcc -mmcu=atmega328p -DF_CPU=16000000L -ffunction-sections -fdata-sections \
+    -fno-caller-saves -Os -Wall -Wextra -pedantic -Werror -Wshadow -Wstrict-overflow \
+    -fno-strict-aliasing -std=c11 \
+        uart_example.c \
+          -o uart_example.elf
+
+avrdude  -v -patmega328p -c arduino -P /dev/cu.usbmodem1421 -b 115200 -D -U flash:w:uart_example.elf
+            </code></pre>
+          </section>
+
+          <!-- Code? -->
+          <section>
+            <h5>avr Microcontroller</h5>
+            <ul>
               <li>
-                Der Umgang mit AVR Microcontrollern
+                Der Umgang mit avr Microcontrollern
               </li>
               <li>
-                Programmierung eines AVR Microcontrollers
+                Programmierung eines avr Microcontrollers
               </li>
+          </section>
+
+          <!-- Noch ein Bild? :/ -->
+          <section>
+            <h6>Programmierung eines avr Microcontrollers</h6>
+            <!-- Code? -->
           </section>
 
           <section data-background-video="https://leonard.goehrs.eu/etp_vidbg.webm" data-background-video-loop data-background-video-muted>
