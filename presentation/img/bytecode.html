@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <script src="../lib/smoothscrolling.js"></script>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+    body {
+    
+      color: white;
+      max-width: 70em;
+      margin: 0 auto;
+      opacity: 0.2;
+      height: 100%;
+      overflow: hidden;
+    }
+  
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 0;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+  
+    h2 {
+      font-size: 1.2em;
+      margin: 0.1em 0.5em;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.81);
+    }
+  
+    h3 {
+      margin: 0.1em 1em;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.71);
+    }
+  
+    p {
+      margin-left: 1.5em;
+      margin-right: 1em;
+    }
+  
+    pre {
+      background-color: #dae3cd;
+      color: black;
+      padding: 1em;
+      margin: 0.8em 1.8em;
+      border-radius: 0.5em;
+      box-shadow: 0 0 1em rgba(0, 0, 0, 0.34);
+    }
+  </style>
+</head>
+<body>
+<h1 id="instructions">Instructions:</h1>
+<h2 id="vm-instructions-and-encoding">VM-instructions and encoding:</h2>
+<pre><code>Instr bits  | Name       | Description
+------------+------------+------------
+00 00 00 __ |            | Reserved for later use
+            |            |
+00 00 01 00 | SOV        | Skip if last arithmetic instruction generated an over- or underflow
+00 00 01 01 | SPU        | Push current PC and RC to stack
+00 00 01 10 | SPO        | Pop RC and fill PC buffer from stack
+00 00 01 11 | SPJ        | Perform the jump in the PC buffer
+            |            |
+00 00 10 XX | LD  XX     | Load next Byte into register XX and skip execution over it
+            |            |
+00 00 11 __ |            | Reserved for later use
+            |            |
+00 01 00 XX | DEC XX     | Decrement register XX by one
+00 01 01 XX | INC XX     | Increment register XX by one
+00 01 10 XX | NOT XX     | Bitwise NOT of Register XX
+00 01 11 XX | SRR XX     | Shift register right by one bit
+            |            |
+00 10 NN NN | JFW NNNN   | Jump forward NNNN+1 instructions
+00 11 NN NN | JBW NNNN   | Jump backwards NNNN+1 instructions
+            |            |
+01 00 YY XX | MOV XX  YY | Copy register content of YY to XX
+01 01 YY XX | OR  XX  YY | Store logic or of XX and YY in XX
+01 10 YY XX | AND XX  YY | Store logic and of XX and YY in XX
+01 11 YY XX | XOR XX  YY | Store logic exclusive or of XX and YY in XX
+            |            |
+10 00 YY XX | ADD XX  YY | Store sum of XX and YY in XX
+10 01 YY XX | SUB XX  YY | Store difference of XX and YY in XX
+10 10 YY XX | SEQ XX  YY | Skip next instruction if equal
+10 11 YY XX | SNE XX  YY | Skip next instruction if not equal
+            |            |
+11 0A AA XX | LDA AAA XX | Load io address AAA into register XX
+11 1A AA XX | STA AAA XX | Store Register XX into io address AAA</code></pre>
+<h2 id="aliases">Aliases:</h2>
+<pre><code>Instruction | Alias for | Description
+------------+-----------+------------
+NEG XX      | SUB RZ XX | Gives the 2-complement of a number
+SRL XX      | ADD XX XX | Shift register left by one bit
+SKP         | SEQ RZ RZ | Skip next instruction unconditionally
+NOP         | SNE RZ RZ | No operation</code></pre>
+<h1 id="registers">Registers:</h1>
+<pre><code>Reg bits | Name | Description
+---------+------+------------
+00       | RZ   | Zero register. Allways reads as zero. Writes redirect to the other register in the command
+01       | RA   | General purpose register A
+10       | RB   | General purpose register B
+11       | RC   | General purpose register C</code></pre>
+<h1 id="memory-addresses">Memory Addresses:</h1>
+<pre><code>Addr bits | Name  | Description
+----------+-------+------------
+0 00      | Mot1  | Signed Motor 1 speed
+0 01      | Mot2  | Signed Motor 2 speed
+0 10      | DIn   | Digital Inputs
+0 11      | DOut  | Digital Outputs
+          |       |
+1 00      | Timer | Counts down at 60Hz when set to something else than zero
+1 01      | RAM1  | General purpose memory A
+1 10      | RAM2  | General purpose memory B
+1 11      | RAM3  | General purpose memory c</code></pre>
+<h1 id="examples">Examples:</h1>
+<h2 id="drive-forward-for-some-time">Drive forward for some time:</h2>
+<pre><code>LD RA 64       // Load motor speed and direction Fwd 50%
+LD RB 120      // Load time to drive for Two seconds
+
+STA Mot1 RA    // Set Motor 1
+STA Mot2 RA    // Set Motor 2
+
+STA Timer RB   // Setup timer
+
+loop:
+LDA Timer RC   // Read timer value
+SEQ RZ RC      // Skip next instruction if time is up
+JBW loop       // Loop
+
+STA Mot1 RZ    // Stop Motor 1
+STA Mot2 RZ    // Stop Motor 2</code></pre>
+<h2 id="drive-forward-until-button-one-triggers-then-turn-right">Drive forward until button one triggers, then turn right</h2>
+<pre><code>LD RA 64        // Load motor speed and direction Fwd 50%
+LD RB 1         // Load bitmask
+
+STA Mot1 RA     // Set Motor 1
+STA Mot2 RA     // Set Motor 2
+
+waitbtn:
+LDA DIn RC      // Load digital input register
+AND RC RB       // Mask out all uninteresting bits
+SNE RZ RC       // Check if bit is set
+JBW waitbtn
+
+MOV RB RA       // Make a backup of the motor speed
+NEG RB          // and invert it
+
+STA Mot1 RB     // Drive backwards Motor 1
+STA Mot2 RB     // Drive backwards Motor 2
+
+delay:
+LD RC 60        // Load driving time
+STA Timer RC    // Start timer
+
+delaylp:
+LDA Timer RC    // Load timer value
+SEQ RZ RC       // Check if time is up
+JBW delaylp     // Loop if it is not
+
+SNE RZ RA       // When run for the first time RA contains the motor speed
+JFW stop        // When run for the second time it is set to zero below
+
+STA Mot1 RA     // Drive forwards Motor 1
+MOV RA RZ       // Indicate that motors should be stoped next time
+JBW delay       // Delay again
+
+stop:
+STA Mot1 RZ     // Stop Motor 1
+STA Mot2 RZ     // Stop Motor 2</code></pre>
+    <div name="wohingenau" id="wohingenau"> </div>
+  </body>
+  <script>
+    smoothScroll("wohingenau");
+  </script>
+</html>

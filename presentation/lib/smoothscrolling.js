@@ -14,9 +14,8 @@ function smoothScroll(eID) {
     }
 
     var distance = stopY - startY;
-    var step = Math.round(distance / 5000);
+    var step = Math.max(Math.round(distance / 5000), 0.3);
     var leapY = startY + step;
-
 
     setInterval(function(){
 
