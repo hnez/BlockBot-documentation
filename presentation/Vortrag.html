@@ -409,19 +409,19 @@ $ hd small.brbc
             <img style="width:35%" src="img/arduino_gui.png" />
           </section>
 
-          <!--  Hier muss ich ein Bild mit Arduino angeschlossen als ISP machen -->
           <section data-background-image="img/arduino_isp.jpg" class="bgedsection">
             <h5>Arduino als ISP</h5>
             <pre style="box-shadow: unset"><code class="nohighlight">
 #!/bin/sh
 
-avr-gcc -mmcu=atmega328p -DF_CPU=16000000L -ffunction-sections -fdata-sections \
-    -fno-caller-saves -Os -Wall -Wextra -pedantic -Werror -Wshadow -Wstrict-overflow \
-    -fno-strict-aliasing -std=c11 \
-        uart_example.c \
-          -o uart_example.elf
+avr-gcc -mmcu=atmega328p -DF_CPU=16000000L -ffunction-sections \
+  -fdata-sections -fno-caller-saves -Os -Wall -Wextra -pedantic \
+  -Werror -Wshadow -Wstrict-overflow \
+  -fno-strict-aliasing -std=c11 \
+  uart_example.c -o uart_example.elf
 
-avrdude  -v -patmega328p -c arduino -P /dev/cu.usbmodem1421 -b 115200 -D -U flash:w:uart_example.elf
+avrdude  -v -patmega328p -c arduino -P /dev/cu.usbmodem1421 \
+  -b 115200 -D -U flash:w:uart_example.elf
             </code></pre>
           </section>
 
@@ -435,6 +435,7 @@ avrdude  -v -patmega328p -c arduino -P /dev/cu.usbmodem1421 -b 115200 -D -U flas
               <li>
                 Programmierung eines avr Mikrocontrollers
               </li>
+            </ul>
           </section>
 
           <!-- Noch ein Bild? :/ -->
