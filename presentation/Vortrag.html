@@ -393,15 +393,15 @@ $ hd small.brbc
         <section>
           <h3>Gelerntes</h3>
 
-          <section data-background-image="img/arduino_isp.jpg" class="bgedsection">
+          <section data-background-image="img/arduino_isp.min.jpg" class="bgedsection">
             <h5>Arduino</h5>
             <p>
             Der grundliegende Umgang mit Arduino
             </p>
-            <img style="width:40%" src="img/arduino.jpg" />
+            <img style="width:40%" src="img/arduino.min.jpg" />
           </section>
 
-          <section data-background-image="img/arduino_isp.jpg" class="bgedsection">
+          <section data-background-image="img/arduino_isp.min.jpg" class="bgedsection">
             <h5>Arduino</h5>
             <p>
               Programmierung in der Arduinoumgebung
@@ -409,7 +409,7 @@ $ hd small.brbc
             <img style="width:35%" src="img/arduino_gui.png" />
           </section>
 
-          <section data-background-image="img/arduino_isp.jpg" class="bgedsection">
+          <section data-background-image="img/arduino_isp.min.jpg" class="bgedsection">
             <h5>Arduino als ISP</h5>
             <pre style="box-shadow: unset"><code class="nohighlight">
 #!/bin/sh
@@ -425,9 +425,8 @@ avrdude  -v -patmega328p -c arduino -P /dev/cu.usbmodem1421 \
             </code></pre>
           </section>
 
-          <!-- Code? -->
-          <section>
-            <h5>avr Mikrocontroller</h5>
+          <section data-background-image="img/mikrocontroller.min.jpg" class="bgedsection">
+            <!-- <h5>Kein Platz für: avr Mikrocontroler</h5> -->
             <ul>
               <li>
                 Der Umgang mit avr Mikrocontrollern
@@ -436,13 +435,23 @@ avrdude  -v -patmega328p -c arduino -P /dev/cu.usbmodem1421 \
                 Programmierung eines avr Mikrocontrollers
               </li>
             </ul>
+<!-- Die Formatierung muss so bleiben wegen Platzmangel auf der Folie -->
+<pre style="box-shadow: unset"><code class="c">#include &lt;avr/io.h&gt; //[..]
+
+#define UA_TMR_PRESCALE_REG (_BV(CS01) | _BV(CS00)) //[..]
+
+int main (void)
+{
+  uart_init(); //[..]
+
+  for(;;){
+    //[..]
+  }
+  return (0);
+}</code></pre>
           </section>
 
-          <!-- Noch ein Bild? :/ -->
-          <section>
-            <h6>Programmierung eines avr Mikrocontrollers</h6>
-            <!-- Code? -->
-          </section>
+
 
           <section data-background-video="https://leonard.goehrs.eu/etp_vidbg.webm" data-background-video-loop data-background-video-muted>
             <h5>Versionsverwaltung (git)</h5>
