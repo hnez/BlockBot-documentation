@@ -37,7 +37,7 @@ Reveal.addEventListener( 'slidechanged', function( event ) {
   if (state.indexh == 1 && state.indexv == 0) {
     curtime= 0;
   }
-
+/*
   // Na. Sieht das eklig aus ?
   setTimeout(function() {
     var parent= document.getElementsByClassName('slide-number')[0]
@@ -50,9 +50,7 @@ Reveal.addEventListener( 'slidechanged', function( event ) {
 
     parent.appendChild(span);
   }, 0);
-
-
-
+*/
 });
 
 hljs.initHighlightingOnLoad();
