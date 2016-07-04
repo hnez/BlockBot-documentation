@@ -2,18 +2,23 @@ var curtime= 0;
 var maxtime= 600;
 var slidespeakmap= [
   ['Leonard'],
-  ['Leonard', 'Leonard', 'Lenard',  'Lenard'],
-  ['Lenard',  'Lenard',  'Lenard',  'Leonard'],
-  ['Leonard', 'Leonard', 'Lenard',  'Leonard', 'Leonard', 'Lenard',
-   'Lenard',  'Lenard',  'Leonard'],
-  ['Leonard']
-]
+  ['Lenard'],
+  ['Lenard'],
+  ['Lenard'],
+  ['Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard',
+   'Lenard',  'Lenard',  'Lenard',  'Lenard',  'Lenard'],
+  ['Leonard', 'Leonard', 'Leonard', 'Leonard'],
+  ['Leonard', 'Leonard', 'Leonard', 'Leonard',
+   'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard'],
+  ['Lenard',  'Lenard',  'Lenard',  'Lenard',  'Leonard', 'Leonard', 'Leonard', 'Leonard'],
+  ['Leonard'],
+  ['Lenard']
+];
 
 var speaksymbolmap= {
   'Leonard' : ['rgb(96, 255, 0)', 'LG'],
   'Lenard' : ['#42affa', 'LW'],
-}
-
+};
 
 function getTimer()
 {
@@ -37,7 +42,7 @@ Reveal.addEventListener( 'slidechanged', function( event ) {
   if (state.indexh == 1 && state.indexv == 0) {
     curtime= 0;
   }
-/*
+
   // Na. Sieht das eklig aus ?
   setTimeout(function() {
     var parent= document.getElementsByClassName('slide-number')[0]
@@ -50,7 +55,6 @@ Reveal.addEventListener( 'slidechanged', function( event ) {
 
     parent.appendChild(span);
   }, 0);
-*/
 });
 
 hljs.initHighlightingOnLoad();
