@@ -6,7 +6,7 @@ var slidespeakmap= [
   ['Lenard'],
   ['Lenard'],
   ['Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard',
-   'Lenard',  'Lenard',  'Lenard',  'Lenard',  'Lenard'],
+   'Lenard',  'Lenard',  'Lenard',  'Lenard',  'Lenard', 'Lenard'],
   ['Leonard', 'Leonard', 'Leonard', 'Leonard'],
   ['Leonard', 'Leonard', 'Leonard', 'Leonard',
    'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard', 'Leonard'],
