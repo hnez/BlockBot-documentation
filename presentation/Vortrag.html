@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="lib/reveal.js/css/reveal.css" />
     <link rel="stylesheet" href="lib/reveal.js/css/theme/black.css" id="theme" />
 
-    <link rel="stylesheet" href="lib/highlight/xcode.css">
-
     <style>
       .ersatzschaltbild {
         box-shadow: unset !important;
@@ -196,7 +194,7 @@
             <h5>Firmware ♥ Übertragung Bitweise</h5>
 
 
-            <pre style="box-shadow: unset;"><code class="c" style="max-height: 450px;">
+            <pre style="box-shadow: unset;"><code style="max-height: 450px;">
 b_rcvd&gt;&gt;=1;
 
 if (RX_PIN &amp; _BV(RX_NUM)) {
@@ -313,7 +311,7 @@ if (uart.flags.forward) {
                 Implementierung
               </a>
             </p>
-            <pre style="box-shadow: unset"><code class="nohighlight">
+            <pre style="box-shadow: unset"><code>
 Instr bits  | Name       | Description
 ------------+------------+------------
 ...         |            |
@@ -346,7 +344,7 @@ Instr bits  | Name       | Description
           <section>
             <h5>Programme</h5>
 
-            <pre style="box-shadow: unset"><code class="nohighlight">
+            <pre style="box-shadow: unset"><code>
  LD RA          // Load motor speed and direction
  64             // Fwd 50%
  LD RB          // Load time to drive for
@@ -367,7 +365,7 @@ loop:
           <section>
             <h5>Assembler (brkas)</h5>
 
-            <pre style="box-shadow: unset"><code class="nohighlight">
+            <pre style="box-shadow: unset"><code>
 $ ./brkas.py source_in small.brkas bytecode_out small.brbc
 
 $ hd small.brbc
@@ -405,7 +403,7 @@ $ hd small.brbc
 
           <section data-background-image="img/arduino_isp.min.jpg" class="bgedsection">
             <h5>Arduino als ISP</h5>
-            <pre style="box-shadow: unset"><code class="nohighlight">
+            <pre style="box-shadow: unset"><code>
 #!/bin/sh
 
 avr-gcc -mmcu=atmega328p -DF_CPU=16000000L -ffunction-sections \
@@ -430,7 +428,7 @@ avrdude  -v -patmega328p -c arduino -P /dev/cu.usbmodem1421 \
               </li>
             </ul>
 <!-- Die Formatierung muss so bleiben wegen Platzmangel auf der Folie -->
-<pre style="box-shadow: unset"><code class="c">#include &lt;avr/io.h&gt; //[..]
+<pre style="box-shadow: unset"><code>#include &lt;avr/io.h&gt; //[..]
 
 #define UA_TMR_PRESCALE_REG (_BV(CS01) | _BV(CS00)) //[..]
 
@@ -450,7 +448,7 @@ int main (void)
           <section data-background-video="https://leonard.goehrs.eu/etp_vidbg.webm" data-background-video-loop data-background-video-muted>
             <h5>Versionsverwaltung (git)</h5>
 
-            <pre style="box-shadow: unset"><code class="nohighlight">
+            <pre style="box-shadow: unset"><code>
 commit 0df71ce5066dcfa8f88049d3dd0e514a56db26ab
 Author: Leonard Göhrs leonard@goehrs.eu
 Date:   Thu May 26 11:38:07 2016 +0200
@@ -481,7 +479,7 @@ Better active clock
           <section>
             <h5>Unit tests</h5>
 
-            <pre style="box-shadow: unset; font-size:40%"><code class="nohighlight">
+            <pre style="box-shadow: unset; font-size:40%"><code>
 static char *<a href="https://github.com/hnez/BlockBot-firmware/blob/master/interpreter/tests/tst-opcodes.c#L159">test_op_jfw</a>()
 {
   struct vm_status_t vm;
@@ -505,7 +503,7 @@ static char *<a href="https://github.com/hnez/BlockBot-firmware/blob/master/inte
           <section>
             <h5>Unit tests</h5>
 
-            <pre style="box-shadow: unset"><code class="nohighlight">
+            <pre style="box-shadow: unset"><code>
 $ make tests
 gcc -ffunction-sections -fdata-sections -Os -Wall -Wextra \
 -pedantic -Werror -Wshadow -Wstrict-overflow \
@@ -572,7 +570,6 @@ rm tests/tst-opcodes.test</pre></code>
 
     <script src="lib/reveal.js/js/head.min.js"></script>
     <script src="lib/reveal.js/js/reveal.js"></script>
-    <script src="lib/highlight/highlight.js"></script>
     <script src="lib/init.js"></script>
   </body>
 </html>
